@@ -1,7 +1,35 @@
 /*IMPORT GOOGLE FONTS*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Six+Caps&display=swap");
+
+:root {
+    --primary-color: #402620;
+    --secondary-color: #91492b;
+    --primary-font: "Six Caps", sans-serif;
+    --secondary-font: "Inter", sans-serif;
+}
 
 * {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: url("../images/background-image-quiz.webp") no-repeat center
+    center/cover;
+    
+}
+
+h1 {
+    font-family: var(--primary-font);
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-top: 57px;
+}
+
+#container {
+    position: relative;
+
 }
