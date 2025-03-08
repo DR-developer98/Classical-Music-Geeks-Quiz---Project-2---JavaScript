@@ -16,28 +16,55 @@
     <title>Classical Music Geeks Quiz</title>
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
   </head>
   <body>
     <h1>Classical Music Geeks Quiz</h1>
-    <div id="container">
-      <div id="startScreen">
-        <h2></h2>
-        <p></p>
-        <form action="">
-          <label for="username">Username</label>
-          <input type="text" id="username" name="username" required />
-          <button type="submit">Choose mode</button>
-          <button>Easy</button>
-          <button>Medium</button>
-          <button>Hard</button>
-        </form>
+    <main>
+      <div id="container">
+        <div id="startScreen">
+          <h2>Welcome to the Classical Music Geeks Quiz!</h2>
+          <br />
+          <p>
+            Are you ready to test your classical music knowledge in a fun
+            way?<br />
+            These are the rules:
+          </p>
+          <br />
+          <ol>
+            <li>Enter a username</li>
+            <li>Select the desired mode</li>
+            <li>Whenever you're ready, click on "Start the quiz"</li>
+            <li>Have fun!</li>
+          </ol>
+          <br />
+          <form action="#" method="POST" id="startForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required /><br />
+            <button type="submit">Choose mode</button><br/>
+            <button>Easy</button><br/>
+            <button>Medium</button><br/>
+            <button>Hard</button>
+          </form>
+        </div>
       </div>
-    </div>
-
+    </main>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
