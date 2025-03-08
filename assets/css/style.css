@@ -26,6 +26,7 @@ body {
 }
 
 main {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,30 +38,27 @@ h1 {
     text-align: center;
     letter-spacing: 2px;
     color: var(--primary-color);
-    font-size: 300%;
-    margin-top: 50px;
+    font-size: 3rem;
+    margin-top: 25%;
 }
 
 #container {
-    background-color: /*var(--primary-color)*/ rgba(64, 38, 32, 0.9);
+    background-color: rgba(64, 38, 32, 0.9);
     color: white;
     font-family: var(--secondary-font);
+    font-size: 1.2rem;
     width: fit-content;
     padding: 8px;
     border-radius: 10px;
     margin: 10px 5px;
 }
 
-#container>ol {
-    margin-left: 15px;
+#container>h2 {
+    text-align: center;
 }
 
-#buttonContainer {
-    margin-top: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: fit-content;
+#container>ol {
+    margin-left: 20%;
 }
 
 button {
@@ -75,8 +73,32 @@ button {
     width: 209px;
 }
 
-#buttonContainer>#chooseMode {
-    margin-top: 10px;
+#startForm {
+    text-align: center;
+}
+
+#startForm>input {
+    font-weight: bold;
+    font-family: var(--secondary-font);
+    font-size: 17px;
+    color: var(--primary-color);
+    background-color: white;
+    border: 2px solid var(--button-color);
+    border-radius: 6px;
+    height: 30px;
+}
+
+#startForm>#chooseMode {
+    margin: 10px auto;
+}
+
+#buttonContainer {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
 }
 
 .buttonSelected {
