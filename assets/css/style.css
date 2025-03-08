@@ -15,7 +15,7 @@
 }
 
 /*GLOBAL RULES*/
-.hide {
+.hide, .hide-start {
     display: none;
 }
 
