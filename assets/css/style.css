@@ -3,7 +3,7 @@
 
 :root {
     --primary-color: #402620;
-    --secondary-color: #91492b;
+    --button-color: #2b1915;
     --primary-font: "Six Caps", sans-serif;
     --secondary-font: "Inter", sans-serif;
 }
@@ -12,6 +12,11 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+}
+
+/*GLOBAL RULES*/
+.hide {
+    display: none;
 }
 
 body {
@@ -37,27 +42,45 @@ h1 {
 }
 
 #container {
-    background-color: var(--primary-color);
+    background-color: /*var(--primary-color)*/ rgba(64, 38, 32, 0.9);
     color: white;
     font-family: var(--secondary-font);
     width: fit-content;
     padding: 8px;
     border-radius: 10px;
     margin: 10px 5px;
-
 }
 
-#startScreen>ol {
+#container>ol {
     margin-left: 15px;
 }
 
-#startScreen button {
+#buttonContainer {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+}
+
+#buttonContainer>button {
     background-color: white;
-    padding: 5px;
     font-size: 100%;
     font-family: var(--secondary-font);
-    letter-spacing: 2px;
+    text-align: center;
     font-weight: bold;
-    border: 10px solid var(--primary-color);
-    border-radius: 5px;
+    border: 2px solid var(--button-color);
+    border-radius: 8px;
+    padding: 5px;
+    width: 209px;
 }
+
+#buttonContainer>button:hover {
+    background-color: var(--button-color);
+    color: white;
+}
+
+#buttonContainer>#chooseMode {
+    margin-top: 10px;
+}
+
