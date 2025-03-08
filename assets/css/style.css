@@ -101,8 +101,12 @@ button {
     height: fit-content;
 }
 
-.buttonSelected {
+.buttonHover {
     color: white;
     background-color: var(--button-color);
 }
 
+.buttonSelected {
+    color: white;
+    background-color: var(--button-color);
+}
