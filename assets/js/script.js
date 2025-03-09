@@ -29,16 +29,17 @@ document.addEventListener("DOMContentLoaded", function () {
       btn.classList.toggle("hide");
     }
     chooseMode.classList.toggle("buttonSelected");
-  }
-
-  for (let btn of modeButtons) {
-    btn.addEventListener("click", showStartQuizButton);
-  }
-
-  /*
+    for (let btn of modeButtons) {
+      //Adds click event listener on all mode buttons, that triggers appearance Start quiz button
+      btn.addEventListener("click", showStartQuizButton);
+    }
+    /*
   Shows the "Start quiz" button when clicking on any of the modes
   */
-  function showStartQuizButton(e) {
-    startQuizButton.classList.toggle("hide-start");
+    function showStartQuizButton(e) {
+      const selectedMode = e.target;
+      selectedMode.classList.toggle("buttonSelected");
+      startQuizButton.classList.toggle("hide-start");
+    }
   }
 });
