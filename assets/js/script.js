@@ -585,14 +585,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   startQuizButton.addEventListener("click", startQuiz);
 
-  //QUIZ START FUNCTION
+  //START QUIZ FUNCTION
   function startQuiz() {
     //Hides startWindow and shows quizWindow when the user clicks on "Start the quiz"
     startWindow.classList.toggle("hide");
     quizWindow.classList.toggle("hide");
-    //IF STATEMENT for choosing the right question pool 
+    //IF STATEMENT for choosing the right question pool
     if (easyMode.classList.contains("buttonSelected")) {
-      quizWindow.innerHTML = `<h2>WELCOME TO THE EASY MODE</h2>`;
+      for (let i = 0; i < 5; i++) {
+        let j = Math.floor(Math.random()*easyQuestionsList.length);
+        questionText.innerText = `${easyQuestionsList[j].questionText}`;
+        answer1.innerText = `${easyQuestionsList[j].answer1}`;
+        answer2.innerText = `${easyQuestionsList[j].answer2}`;
+        answer3.innerText = `${easyQuestionsList[j].answer3}`;
+        answer4.innerText = `${easyQuestionsList[j].answer4}`;
+      }
     } else if (mediumMode.classList.contains("buttonSelected")) {
       quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
     } else if (hardMode.classList.contains("buttonSelected")) {
