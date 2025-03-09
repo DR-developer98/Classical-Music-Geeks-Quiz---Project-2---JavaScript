@@ -81,107 +81,107 @@ document.addEventListener("DOMContentLoaded", function () {
       questionText: "Who composed the 'Für Elise'?",
       answer1: "Johann Sebastian Bach",
       answer2: "Wolfgang Amadeus Mozart",
-      answer3: "Ludwig van Beethoven", // correct
-      answer4: "Franz Schubert",
+      correct: "Ludwig van Beethoven", // correct
+      answer3: "Franz Schubert",
     },
     {
       questionText: "Which composer wrote 'The Four Seasons'?",
-      answer1: "Antonio Vivaldi", // correct
-      answer2: "Johannes Brahms",
-      answer3: "Frederic Chopin",
-      answer4: "Giuseppe Verdi",
+      correct: "Antonio Vivaldi", // correct
+      answer1: "Johannes Brahms",
+      answer2: "Frederic Chopin",
+      answer3: "Giuseppe Verdi",
     },
     {
       questionText: "The opera 'Carmen' was composed by?",
-      answer1: "Georges Bizet", // correct
-      answer2: "Gioachino Rossini",
-      answer3: "Richard Wagner",
-      answer4: "Franz Liszt",
+      correct: "Georges Bizet", // correct
+      answer1: "Gioachino Rossini",
+      answer2: "Richard Wagner",
+      answer3: "Franz Liszt",
     },
     {
       questionText: "Which composer was known as the 'Waltz King'?",
       answer1: "Franz Schubert",
-      answer2: "Johann Strauss II", // correct
-      answer3: "Richard Strauss",
-      answer4: "Franz Joseph Haydn",
+      correct: "Johann Strauss II", // correct
+      answer2: "Richard Strauss",
+      answer3: "Franz Joseph Haydn",
     },
     {
       questionText: "Who composed the 'Moonlight Sonata'?",
-      answer1: "Ludwig van Beethoven", // correct
-      answer2: "Wolfgang Amadeus Mozart",
-      answer3: "Franz Schubert",
-      answer4: "Johann Sebastian Bach",
+      correct: "Ludwig van Beethoven", // correct
+      answer1: "Wolfgang Amadeus Mozart",
+      answer2: "Franz Schubert",
+      answer3: "Johann Sebastian Bach",
     },
     {
       questionText: "Who composed the ballet 'The Nutcracker'?",
       answer1: "Igor Stravinsky",
-      answer2: "Pyotr Ilyich Tchaikovsky", // correct
-      answer3: "Maurice Ravel",
-      answer4: "Claude Debussy",
+      correct: "Pyotr Ilyich Tchaikovsky", // correct
+      answer2: "Maurice Ravel",
+      answer3: "Claude Debussy",
     },
     {
       questionText: "Which composer wrote 'Eine kleine Nachtmusik'?",
       answer1: "Ludwig van Beethoven",
       answer2: "Johann Sebastian Bach",
-      answer3: "Wolfgang Amadeus Mozart", // correct
-      answer4: "Joseph Haydn",
+      correct: "Wolfgang Amadeus Mozart", // correct
+      answer3: "Joseph Haydn",
     },
     {
       questionText: "The 'Hallelujah Chorus' is part of which oratorio?",
       answer1: "The Creation",
-      answer2: "Messiah", // correct
-      answer3: "Elijah",
-      answer4: "Requiem",
+      correct: "Messiah", // correct
+      answer2: "Elijah",
+      answer3: "Requiem",
     },
     {
       questionText: "Who composed the 'William Tell Overture'?",
-      answer1: "Gioachino Rossini", // correct
-      answer2: "Antonio Vivaldi",
-      answer3: "George Frideric Handel",
-      answer4: "Ludwig van Beethoven",
+      correct: "Gioachino Rossini", // correct
+      answer1: "Antonio Vivaldi",
+      answer2: "George Frideric Handel",
+      answer3: "Ludwig van Beethoven",
     },
     {
       questionText: "Who composed 'The Blue Danube'?",
-      answer1: "Johann Strauss II", // correct
-      answer2: "Johann Sebastian Bach",
-      answer3: "Wolfgang Amadeus Mozart",
-      answer4: "Franz Schubert",
+      correct: "Johann Strauss II", // correct
+      answer1: "Johann Sebastian Bach",
+      answer2: "Wolfgang Amadeus Mozart",
+      answer3: "Franz Schubert",
     },
     {
       questionText: "Who wrote the 'Brandenburg Concertos'?",
-      answer1: "Johann Sebastian Bach", // correct
-      answer2: "Ludwig van Beethoven",
-      answer3: "Joseph Haydn",
-      answer4: "Antonio Vivaldi",
+      correct: "Johann Sebastian Bach", // correct
+      answer1: "Ludwig van Beethoven",
+      answer2: "Joseph Haydn",
+      answer3: "Antonio Vivaldi",
     },
     {
       questionText: "Who composed 'Boléro'?",
-      answer1: "Maurice Ravel", // correct
-      answer2: "Claude Debussy",
-      answer3: "Igor Stravinsky",
-      answer4: "Sergei Prokofiev",
+      correct: "Maurice Ravel", // correct
+      answer1: "Claude Debussy",
+      answer2: "Igor Stravinsky",
+      answer3: "Sergei Prokofiev",
     },
     {
       questionText:
         "Who composed the 'Symphony No. 9 in D minor' (Ode to Joy)?",
-      answer1: "Ludwig van Beethoven", // correct
-      answer2: "Johannes Brahms",
-      answer3: "Franz Schubert",
-      answer4: "Felix Mendelssohn",
+      correct: "Ludwig van Beethoven", // correct
+      answer1: "Johannes Brahms",
+      answer2: "Franz Schubert",
+      answer3: "Felix Mendelssohn",
     },
     {
       questionText: "Who composed the 'Carnival of the Animals'?",
-      answer1: "Camille Saint-Saëns", // correct
-      answer2: "Claude Debussy",
-      answer3: "Gabriel Fauré",
-      answer4: "Hector Berlioz",
+      correct: "Camille Saint-Saëns", // correct
+      answer1: "Claude Debussy",
+      answer2: "Gabriel Fauré",
+      answer3: "Hector Berlioz",
     },
     {
       questionText: "Which composer wrote 'Piano Sonata No. 16 in C Major'?",
       answer1: "Ludwig van Beethoven",
       answer2: "Johann Sebastian Bach",
       answer3: "Franz Schubert",
-      answer4: "Wolfgang Amadeus Mozart", // correct
+      correct: "Wolfgang Amadeus Mozart", // correct
     },
   ];
   const mediumQuestionsList = [
@@ -580,7 +580,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const answer1 = document.getElementById("answer1");
   const answer2 = document.getElementById("answer2");
   const answer3 = document.getElementById("answer3");
-  const answer4 = document.getElementById("answer4");
+  const answer4 = document.getElementById("correct");
   const nextQuestionBtn = document.getElementById("nextQuestion");
 
   startQuizButton.addEventListener("click", startQuiz);
