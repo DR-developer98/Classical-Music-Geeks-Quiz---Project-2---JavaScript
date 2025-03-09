@@ -541,11 +541,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   ];
   
-  startQuizButton.addEventListener("click", startQuiz);
+  //Question window components
+  const chosenUsernam = document.getElementById("chosenUsernam");
+  const questionCounter = document.getElementById("questionCounter");
+  const questionText = document.getElementById("questionText");
+  const answer1 = document.getElementById("answer1");
+  const answer2 = document.getElementById("answer2");
+  const answer3 = document.getElementById("answer3");
+  const answer4 = document.getElementById("answer4");
 
+  startQuizButton.addEventListener("click", startQuiz);
   //Hides startWindow and shows quizWindow when the user clicks on "Start the quiz"
   function startQuiz() {
     startWindow.classList.toggle("hide");
     quizWindow.classList.toggle("hide");
+
   }
 });
