@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
       btn.classList.toggle("hide");
     }
     chooseMode.classList.toggle("buttonSelected");
+
     for (let btn of modeButtons) {
       //Adds click event listener on all mode buttons, that triggers appearance Start quiz button
       btn.addEventListener("click", showStartQuizButton);
