@@ -26,11 +26,27 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let btn of modeButtons) {
       btn.classList.toggle("hide");
     }
-    startQuizButton.classList.remove("hide-start");
     chooseMode.classList.toggle("buttonSelected");
+    startQuizButton.classList.toggle("hide-start");
 
+    /*
+    **When clicking on Choose mode a second time after selecting one of the modes, 
+    if the user clicks on Choose mode again, the previously selected mode button will 
+    no longer have the "buttonSelected" class and the "Start the quiz" button will be 
+    disabled
+    */
     for (let btn of modeButtons) {
-      //Adds click event listener on all mode buttons, that triggers appearance of Start quiz button
+      if (btn.classList.contains("hide")){
+        btn.classList.remove("buttonSelected");
+        startQuizButton.disabled = true;
+      }
+    }
+
+    /*
+    **Adds click event listener to all mode buttons, which removes the
+    "disabled" attribute from "Start the quiz" button
+    */
+    for (let btn of modeButtons) {
       btn.addEventListener("click", showStartQuizButton);
     }
 
@@ -39,11 +55,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const selectedMode = e.target;
 
       /*
-       **The following three lines ensure the following: the buttonSelected class is given 
-       solely to the mode button that is selected. If any of the other two buttons is clicked, 
-       the previously clicked mode will acquire the original colours, whilst the newly clicked mode 
-       will be given the class buttonSelected. As long as the mode buttons are visible, so will be 
-       the "Start the quiz" button.
+       **Assigns buttonSelected class only to the selected mode button. When clicking on any other
+       mode button, the buttonSelected class will pass - as it were - from the previous mode to 
+       the newly selected mode. The "Start the quiz" button will be enabled only as soon as one of 
+       the modes is selected.
        */
       for (let btn of modeButtons) {
         btn.classList.remove("buttonSelected");
