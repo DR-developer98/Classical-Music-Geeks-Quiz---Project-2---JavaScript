@@ -19,6 +19,29 @@
     display: none;
 }
 
+button {
+    background-color: white;
+    font-size: 100%;
+    font-family: var(--secondary-font);
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid var(--button-color);
+    border-radius: 8px;
+    padding: 5px;
+    width: 209px;
+}
+
+.buttonHover {
+    color: white;
+    background-color: var(--button-color);
+}
+
+.buttonSelected {
+    color: white;
+    background-color: var(--button-color);
+}
+
+/*MAIN STYLES*/
 body {
     min-height: 100vh;
     background: url("../images/background-image-quiz.webp") no-repeat center
@@ -61,17 +84,6 @@ h1 {
     margin-left: 20%;
 }
 
-button {
-    background-color: white;
-    font-size: 100%;
-    font-family: var(--secondary-font);
-    text-align: center;
-    font-weight: bold;
-    border: 2px solid var(--button-color);
-    border-radius: 8px;
-    padding: 5px;
-    width: 209px;
-}
 
 #startForm {
     text-align: center;
@@ -101,15 +113,13 @@ button {
     height: fit-content;
 }
 
-.buttonHover {
-    color: white;
-    background-color: var(--button-color);
+#startQuiz {
+    width: 250px;
+    height: 50px;
+    font-size: 25px;
 }
 
-.buttonSelected {
-    color: white;
-    background-color: var(--button-color);
-}
+
 
 /*MEDIA QUERIES*/
 /*Media query for (tablests) screens 768px and larger*/
