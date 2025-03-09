@@ -76,11 +76,11 @@ h1 {
     margin: 10px 5px;
 }
 
-#container>h2 {
+#startWindow>h2 {
     text-align: center;
 }
 
-#container>ol {
+#startWindow>ol {
     margin-left: 20%;
 }
 

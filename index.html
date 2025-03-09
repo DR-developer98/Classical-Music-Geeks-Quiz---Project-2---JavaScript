@@ -38,36 +38,49 @@
     <h1>Classical Music Geeks Quiz</h1>
     <main>
       <div id="container">
-        <h2>Welcome to the Classical Music Geeks Quiz!</h2>
-        <br />
-        <p>
-          Are you ready to test your classical music knowledge in a fun way?<br />
-          These are the rules:
-        </p>
-        <br />
-        <ol>
-          <li>Enter a username</li>
-          <li>Click on "Choose Mode"</li>
-          <li>Select the desired mode</li>
-          <li>Whenever you're ready, click on "Start the quiz"</li>
-          <li>Have fun!</li>
-        </ol>
-        <br />
-        <form
-          action="https://formdump.codeinstitute.net"
-          method="POST"
-          id="startForm"
-        >
-          <label for="username"><strong>Username:</strong></label>
-          <input type="text" id="username" name="username" required />
-          <br>
-          <button type="submit" id="chooseMode">Choose mode</button>
-        </form>
-        <div id="buttonContainer">
-          <button class="hide mode">Easy (5 questions)</button><br />
-          <button class="hide mode">Medium (7 questions)</button><br />
-          <button class="hide mode">Hard (10 questions)</button><br>
-          <button class="hide-start" id="startQuiz" disabled>Start the quiz!</button>
+        <div id="startWindow">
+          <h2>Welcome to the Classical Music Geeks Quiz!</h2>
+          <br />
+          <p>
+            Are you ready to test your classical music knowledge in a fun
+            way?<br />
+            These are the rules:
+          </p>
+          <br />
+          <ol>
+            <li>Enter a username</li>
+            <li>Click on "Choose Mode"</li>
+            <li>Select the desired mode</li>
+            <li>Whenever you're ready, click on "Start the quiz"</li>
+            <li>Have fun!</li>
+          </ol>
+          <br />
+          <form
+            action="https://formdump.codeinstitute.net"
+            method="POST"
+            id="startForm"
+          >
+            <label for="username"><strong>Username:</strong></label>
+            <input type="text" id="username" name="username" required />
+            <br />
+            <button type="submit" id="chooseMode">Choose mode</button>
+          </form>
+          <div id="buttonContainer">
+            <button class="hide mode">Easy (5 questions)</button><br />
+            <button class="hide mode">Medium (7 questions)</button><br />
+            <button class="hide mode">Hard (10 questions)</button><br />
+            <button class="hide-start" id="startQuiz" disabled>
+              Start the quiz!
+            </button>
+          </div>
+        </div>
+        <div id="quizWindow" class="hide">
+          <p>USERNAME</p>
+          <h2>Question Title</h2>
+          <button></button>
+          <button></button>
+          <button></button>
+          <button></button>
         </div>
       </div>
     </main>

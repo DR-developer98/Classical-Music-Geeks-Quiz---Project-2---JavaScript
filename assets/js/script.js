@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function showModes(e) {
     const form = e.target;
     e.preventDefault();
+
     for (let btn of modeButtons) {
       btn.classList.toggle("hide");
     }
