@@ -2,9 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //↓START PAGE QUIZ↓
   const allButtons = document.querySelectorAll("button");
 
-  /*
-  **Adds hover effect to all buttons
-  */
+  //Adds hover effect to all buttons
   for (let btn of allButtons) {
     btn.addEventListener("mouseenter", function () {
       btn.classList.add("buttonHover");
@@ -20,19 +18,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const modeButtons = document.getElementsByClassName("mode");
   const startQuizButton = document.getElementById("startQuiz");
-  /*
-   **Shows the three mode buttons after clicking on "Choose mode"
-   */
+
+  //Shows the three mode buttons after clicking on "Choose mode"
   function showModes(e) {
     const form = e.target;
     e.preventDefault();
     for (let btn of modeButtons) {
       btn.classList.toggle("hide");
     }
+    startQuizButton.classList.remove("hide-start");
     chooseMode.classList.toggle("buttonSelected");
 
     for (let btn of modeButtons) {
-      //Adds click event listener on all mode buttons, that triggers appearance Start quiz button
+      //Adds click event listener on all mode buttons, that triggers appearance of Start quiz button
       btn.addEventListener("click", showStartQuizButton);
     }
 
@@ -41,17 +39,17 @@ document.addEventListener("DOMContentLoaded", function () {
       const selectedMode = e.target;
 
       /*
-       **Lines 50-54 ensure the following: the buttonSelected class is given solely to the 
-       mode button that is selected. If the user decides to change mode by clicking on any
-       of the other two buttons, the previously clicked mode will acquire the original colours,
-       whilst the newly clicked mode will be assigned the class buttonSelected. As long as the 
-       mode buttons are visible, so is the "Start the quiz" button.
+       **The following three lines ensure the following: the buttonSelected class is given 
+       solely to the mode button that is selected. If any of the other two buttons is clicked, 
+       the previously clicked mode will acquire the original colours, whilst the newly clicked mode 
+       will be given the class buttonSelected. As long as the mode buttons are visible, so will be 
+       the "Start the quiz" button.
        */
       for (let btn of modeButtons) {
         btn.classList.remove("buttonSelected");
       }
       selectedMode.classList.add("buttonSelected");
-      startQuizButton.classList.remove("hide-start");
+      startQuizButton.disabled = false;
     }
   }
 });
