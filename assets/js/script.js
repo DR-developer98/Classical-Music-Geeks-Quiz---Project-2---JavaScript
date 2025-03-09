@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  //↓START PAGE QUIZ↓
+  //------------------↓START PAGE QUIZ↓------------------
   const allButtons = document.querySelectorAll("button");
 
   //Adds hover effect to all buttons
@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  const startWindow = document.getElementById("startWindow");
+  const quizWindow = document.getElementById("quizWindow");
   const chooseMode = document.getElementById("chooseMode");
   const startForm = document.getElementById("startForm");
   startForm.addEventListener("submit", showModes);
@@ -69,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  //---------------↓QUIZ SECTION↓-----------------
   //↓QUESTION POOLS FOR THE DIFFERENT MODES↓
   const easyQuestionsList = [
     {
@@ -537,5 +540,12 @@ document.addEventListener("DOMContentLoaded", function () {
       answer4: "Children's Corner"
     }
   ];
-      
+  
+  startQuizButton.addEventListener("click", startQuiz);
+
+  //Hides startWindow and shows quizWindow when the user clicks on "Start the quiz"
+  function startQuiz() {
+    startWindow.classList.toggle("hide");
+    quizWindow.classList.toggle("hide");
+  }
 });
