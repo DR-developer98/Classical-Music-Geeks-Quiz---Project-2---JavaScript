@@ -581,6 +581,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const answer2 = document.getElementById("answer2");
   const answer3 = document.getElementById("answer3");
   const answer4 = document.getElementById("answer4");
+  const allAnswers = document.getElementsByClassName("answer");
   const nextQuestionBtn = document.getElementById("nextQuestionBtn");
 
   startQuizButton.addEventListener("click", startQuiz);
@@ -592,6 +593,8 @@ document.addEventListener("DOMContentLoaded", function () {
     quizWindow.classList.toggle("hide");
     //IF STATEMENT for choosing the right question pool
     if (easyMode.classList.contains("buttonSelected")) {
+      let q=1;
+      questionCounter.innerText = `Question ${q}/5`;
       for (let i = 0; i < 5; i++) {
         let j = Math.floor(Math.random()*easyQuestionsList.length);
         questionText.innerText = `${easyQuestionsList[j].questionText}`;
@@ -599,6 +602,8 @@ document.addEventListener("DOMContentLoaded", function () {
         answer2.innerText = `${easyQuestionsList[j].answer2}`;
         answer3.innerText = `${easyQuestionsList[j].answer3}`;
         answer4.innerText = `${easyQuestionsList[j].correct}`;
+
+
       }
     } else if (mediumMode.classList.contains("buttonSelected")) {
       quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
