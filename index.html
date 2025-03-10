@@ -66,9 +66,13 @@
             <button type="submit" id="chooseMode">Choose mode</button>
           </form>
           <div id="buttonContainerStart">
-            <button class="hide mode" id="easyMode">Easy (5 questions)</button><br />
-            <button class="hide mode" id="mediumMode">Medium (7 questions)</button><br />
-            <button class="hide mode" id="hardMode">Hard (10 questions)</button><br />
+            <button class="hide mode" id="easyMode">Easy (5 questions)</button
+            ><br />
+            <button class="hide mode" id="mediumMode">
+              Medium (7 questions)</button
+            ><br />
+            <button class="hide mode" id="hardMode">Hard (10 questions)</button
+            ><br />
             <button class="hide-start" id="startQuiz" disabled>
               Start the quiz!
             </button>
@@ -76,7 +80,7 @@
         </div>
         <div id="quizWindow" class="hide">
           <p id="chosenUsername">USERNAME</p>
-          <p>Question<span id="questionCounter"> 1</span>/xx</p>
+          <p id="questionCounter">Question 1/xx</p>
           <h2 id="questionText">Question Text</h2>
           <div id="answersContainer">
             <button id="answer1">Answer 1</button>
@@ -84,7 +88,9 @@
             <button id="answer3">Answer 3</button>
             <button id="answer4">Answer 4</button>
           </div>
-          <button id="nextQuestion" disabled>Next question</button>
+          <div id="nextQuestionCon">
+            <button id="nextQuestionBtn" disabled>Next question</button>
+          </div>
         </div>
       </div>
     </main>

@@ -138,6 +138,12 @@ h1 {
     width: 245px;
 }
 
+#nextQuestionCon {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
 
 
 /*MEDIA QUERIES*/

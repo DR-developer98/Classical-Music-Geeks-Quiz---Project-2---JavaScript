@@ -580,8 +580,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const answer1 = document.getElementById("answer1");
   const answer2 = document.getElementById("answer2");
   const answer3 = document.getElementById("answer3");
-  const answer4 = document.getElementById("correct");
-  const nextQuestionBtn = document.getElementById("nextQuestion");
+  const answer4 = document.getElementById("answer4");
+  const nextQuestionBtn = document.getElementById("nextQuestionBtn");
 
   startQuizButton.addEventListener("click", startQuiz);
 
@@ -598,7 +598,7 @@ document.addEventListener("DOMContentLoaded", function () {
         answer1.innerText = `${easyQuestionsList[j].answer1}`;
         answer2.innerText = `${easyQuestionsList[j].answer2}`;
         answer3.innerText = `${easyQuestionsList[j].answer3}`;
-        answer4.innerText = `${easyQuestionsList[j].answer4}`;
+        answer4.innerText = `${easyQuestionsList[j].correct}`;
       }
     } else if (mediumMode.classList.contains("buttonSelected")) {
       quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
