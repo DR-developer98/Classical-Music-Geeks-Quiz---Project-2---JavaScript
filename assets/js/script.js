@@ -573,6 +573,21 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
+  /*↓↓↓Fisher–Yates shuffle-> CREDIT: ChatGPT, ↓↓↓
+  https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#JavaScript_implementation;
+  **This function makes sure the correct answer isn't always passed to the 
+  same button. 
+  */
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+  /*↑↑↑Fisher-Yates shuffle -> CREDIT: ChatGPT and ↑↑↑
+  **https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#JavaScript_implementation;
+  */
+
   //Question window components
   const chosenUsername = document.getElementById("chosenUsername");
   const questionCounter = document.getElementById("questionCounter");
@@ -593,17 +608,28 @@ document.addEventListener("DOMContentLoaded", function () {
     quizWindow.classList.toggle("hide");
     //IF STATEMENT for choosing the right question pool
     if (easyMode.classList.contains("buttonSelected")) {
-      let q=1;
+      let q = 1;
       questionCounter.innerText = `Question ${q}/5`;
       for (let i = 0; i < 5; i++) {
-        let j = Math.floor(Math.random()*easyQuestionsList.length);
-        questionText.innerText = `${easyQuestionsList[j].questionText}`;
-        answer1.innerText = `${easyQuestionsList[j].answer1}`;
-        answer2.innerText = `${easyQuestionsList[j].answer2}`;
-        answer3.innerText = `${easyQuestionsList[j].answer3}`;
-        answer4.innerText = `${easyQuestionsList[j].correct}`;
+        let j = Math.floor(Math.random() * easyQuestionsList.length);
 
+        //↓↓↓CREDIT: ChatGPT↓↓↓
+        const answers = [
+          easyQuestionsList[j].answer1,
+          easyQuestionsList[j].answer2,
+          easyQuestionsList[j].answer3,
+          easyQuestionsList[j].correct,
+        ];
 
+        shuffleArray(answers);
+
+        questionText.innerText = easyQuestionsList[j].questionText;
+        document.getElementById("answer1").innerText = answers[0];
+        document.getElementById("answer2").innerText = answers[1];
+        document.getElementById("answer3").innerText = answers[2];
+        document.getElementById("answer4").innerText = answers[3];
+        //↑↑↑CREDIT: ChatGPT↑↑↑
+        
       }
     } else if (mediumMode.classList.contains("buttonSelected")) {
       quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
