@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //Shows the three mode buttons after clicking on "Choose mode"
   function showModes(e) {
-    const form = e.target;
     e.preventDefault();
+    const form = e.target;
 
     for (let btn of modeButtons) {
       btn.classList.toggle("hide");
@@ -577,10 +577,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const chosenUsername = document.getElementById("chosenUsername");
   const questionCounter = document.getElementById("questionCounter");
   const questionText = document.getElementById("questionText");
+  const answersContainer = document.getElementById("answersContainer");
   const answer1 = document.getElementById("answer1");
   const answer2 = document.getElementById("answer2");
   const answer3 = document.getElementById("answer3");
-  const answer4 = document.getElementById("correct");
+  const answer4 = document.getElementById("answer4");
+  const allAnswers = document.getElementsByClassName("answer");
   const nextQuestionBtn = document.getElementById("nextQuestion");
 
   startQuizButton.addEventListener("click", startQuiz);
@@ -593,17 +595,17 @@ document.addEventListener("DOMContentLoaded", function () {
     //IF STATEMENT for choosing the right question pool
     if (easyMode.classList.contains("buttonSelected")) {
       for (let i = 0; i < 5; i++) {
-        let j = Math.floor(Math.random()*easyQuestionsList.length);
+        let j = Math.floor(Math.random() * easyQuestionsList.length);
         questionText.innerText = `${easyQuestionsList[j].questionText}`;
         answer1.innerText = `${easyQuestionsList[j].answer1}`;
         answer2.innerText = `${easyQuestionsList[j].answer2}`;
         answer3.innerText = `${easyQuestionsList[j].answer3}`;
-        answer4.innerText = `${easyQuestionsList[j].answer4}`;
+        answer4.innerText = `${easyQuestionsList[j].correct}`;
+
+        //answersContainer.addEventListener("click", rightOrWrong);
+
+        //function rightOrWrong(e) {
       }
-    } else if (mediumMode.classList.contains("buttonSelected")) {
-      quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
-    } else if (hardMode.classList.contains("buttonSelected")) {
-      quizWindow.innerHTML = `<h2>WELCOME TO THE HARD MODE</h2>`;
     }
   }
 });
