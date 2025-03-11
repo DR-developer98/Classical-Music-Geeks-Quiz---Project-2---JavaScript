@@ -592,6 +592,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const chosenUsername = document.getElementById("chosenUsername");
   const questionCounter = document.getElementById("questionCounter");
   const questionText = document.getElementById("questionText");
+  const answersContainer = document.getElementById("answersContainer");
   const answer1 = document.getElementById("answer1");
   const answer2 = document.getElementById("answer2");
   const answer3 = document.getElementById("answer3");
@@ -613,23 +614,35 @@ document.addEventListener("DOMContentLoaded", function () {
       for (let i = 0; i < 5; i++) {
         let j = Math.floor(Math.random() * easyQuestionsList.length);
 
-        //↓↓↓CREDIT: ChatGPT↓↓↓
+        //↓↓↓CREDIT: ChatGPT -> Wikipedia↓↓↓
         const answers = [
           easyQuestionsList[j].answer1,
           easyQuestionsList[j].answer2,
           easyQuestionsList[j].answer3,
           easyQuestionsList[j].correct,
         ];
+        const correctAnswer = easyQuestionsList[j].correct;
 
         shuffleArray(answers);
 
         questionText.innerText = easyQuestionsList[j].questionText;
-        document.getElementById("answer1").innerText = answers[0];
-        document.getElementById("answer2").innerText = answers[1];
-        document.getElementById("answer3").innerText = answers[2];
-        document.getElementById("answer4").innerText = answers[3];
-        //↑↑↑CREDIT: ChatGPT↑↑↑
+        answer1.innerText = answers[0];
+        answer2.innerText = answers[1];
+        answer3.innerText = answers[2];
+        answer4.innerText = answers[3];
+        //↑↑↑CREDIT: ChatGPT -> Wikipedia↑↑↑
         
+        answersContainer.addEventListener("click", rightOrWrong);
+        function rightOrWrong(e) {
+          for (let ans of allAnswers) {
+            if (ans.innerText === correctAnswer) {
+              ans.classList.toggle("right");
+            } else {
+              ans.classList.toggle("wrong");
+            }
+          }
+        }
+
       }
     } else if (mediumMode.classList.contains("buttonSelected")) {
       quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
