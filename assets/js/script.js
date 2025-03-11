@@ -24,7 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const hardMode = document.getElementById("hardMode");
   const startQuizButton = document.getElementById("startQuiz");
 
-  //Shows the three mode buttons after clicking on "Choose mode"
+  /**
+   * Shows the three mode buttons after clicking on "Choose mode" 
+   */
   function showModes(e) {
     const form = e.target;
     e.preventDefault();
@@ -36,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     startQuizButton.classList.toggle("hide-start");
 
     /*
-    **When clicking on Choose mode a second time after selecting one of the modes, 
+    When clicking on Choose mode a second time after selecting one of the modes, 
     if the user clicks on Choose mode again, the previously selected mode button will 
     no longer have the "buttonSelected" class and the "Start the quiz" button will be 
     disabled
@@ -49,19 +51,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /*
-    **Adds click event listener to all mode buttons, which removes the
+    Adds click event listener to all mode buttons, which removes the
     "disabled" attribute from "Start the quiz" button
     */
     for (let btn of modeButtons) {
       btn.addEventListener("click", showStartQuizButton);
     }
 
-    //Shows the start quiz button when clicking on any of the modes
+    /**
+     * Shows the start quiz button when clicking on any of the modes
+     */
     function showStartQuizButton(e) {
       const selectedMode = e.target;
 
       /*
-       **Assigns buttonSelected class only to the selected mode button. When clicking on any other
+       Assigns buttonSelected class only to the selected mode button. When clicking on any other
        mode button, the buttonSelected class will pass - as it were - from the previous mode to 
        the newly selected mode. The "Start the quiz" button will be enabled only as soon as one of 
        the modes is selected.
@@ -574,10 +578,12 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   /*↓↓↓Fisher–Yates shuffle-> CREDIT: ChatGPT, ↓↓↓
-    https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#JavaScript_implementation;
-    **This function makes sure the correct answer isn't always passed to the 
-    same button. 
-    */
+  https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#JavaScript_implementation;
+  */
+
+  /**
+  *Shuffles the items of an array to change their order and - therefore - their indices
+  */
   function shuffleArray(array) {
     for (let a = array.length - 1; a > 0; a--) {
       const b = Math.floor(Math.random() * (a + 1));
@@ -585,8 +591,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   /*↑↑↑Fisher-Yates shuffle -> CREDIT: ChatGPT and ↑↑↑
-   **https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#JavaScript_implementation;
-   */
+  https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#JavaScript_implementation;
+  */
 
   //Question window components
   const chosenUsername = document.getElementById("chosenUsername");
@@ -603,7 +609,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   startQuizButton.addEventListener("click", startQuiz);
 
-  //START QUIZ FUNCTION
+  /**
+   * Upon clicking on Start the quiz, the quiz starts
+   */
   function startQuiz() {
     //Hides startWindow and shows quizWindow when the user clicks on "Start the quiz"
     startWindow.classList.toggle("hide");
@@ -613,7 +621,7 @@ document.addEventListener("DOMContentLoaded", function () {
       let q = 1;
       questionCounter.innerText = `Question ${q}/5`;
       for (let i = 0; i < 5; i++) {
-        let j = Math.floor(Math.random() * (easyQuestionsList.length - 1));
+        let j = Math.floor(Math.random() * easyQuestionsList.length);
 
         //↓↓↓CREDIT: ChatGPT -> Wikipedia↓↓↓
         const answers = [
@@ -632,8 +640,12 @@ document.addEventListener("DOMContentLoaded", function () {
         answer3.innerText = answers[2];
         answer4.innerText = answers[3];
         //↑↑↑CREDIT: ChatGPT -> Wikipedia↑↑↑
-        
+
         answersContainer.addEventListener("click", rightOrWrong);
+        /**
+         * Colours correct answer green and all wrong answers re
+         * when the user clicks on any of the answers
+         */
         function rightOrWrong(e) {
           for (let ans of allAnswers) {
             if (ans.innerText === correctAnswer) {
@@ -642,6 +654,14 @@ document.addEventListener("DOMContentLoaded", function () {
               ans.classList.toggle("wrong");
             }
           }
+
+          if (e.target.innerText === correctAnswer) {
+            points++;
+          }
+          nextQuestionBtn.disabled = false;
+          nextQuestionBtn.addEventListener("click", function () {
+            i++;
+          });
         }
       }
     } else if (mediumMode.classList.contains("buttonSelected")) {
