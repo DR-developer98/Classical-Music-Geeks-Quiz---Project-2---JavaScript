@@ -574,19 +574,19 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   /*↓↓↓Fisher–Yates shuffle-> CREDIT: ChatGPT, ↓↓↓
-  https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#JavaScript_implementation;
-  **This function makes sure the correct answer isn't always passed to the 
-  same button. 
-  */
+    https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#JavaScript_implementation;
+    **This function makes sure the correct answer isn't always passed to the 
+    same button. 
+    */
   function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+    for (let a = array.length - 1; a > 0; a--) {
+      const b = Math.floor(Math.random() * (a + 1));
+      [array[a], array[b]] = [array[b], array[a]];
     }
   }
   /*↑↑↑Fisher-Yates shuffle -> CREDIT: ChatGPT and ↑↑↑
-  **https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#JavaScript_implementation;
-  */
+   **https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#JavaScript_implementation;
+   */
 
   //Question window components
   const chosenUsername = document.getElementById("chosenUsername");
@@ -599,6 +599,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const answer4 = document.getElementById("answer4");
   const allAnswers = document.getElementsByClassName("answer");
   const nextQuestionBtn = document.getElementById("nextQuestionBtn");
+  var points = 0;
 
   startQuizButton.addEventListener("click", startQuiz);
 
@@ -612,7 +613,7 @@ document.addEventListener("DOMContentLoaded", function () {
       let q = 1;
       questionCounter.innerText = `Question ${q}/5`;
       for (let i = 0; i < 5; i++) {
-        let j = Math.floor(Math.random() * easyQuestionsList.length);
+        let j = Math.floor(Math.random() * (easyQuestionsList.length - 1));
 
         //↓↓↓CREDIT: ChatGPT -> Wikipedia↓↓↓
         const answers = [
@@ -642,7 +643,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
         }
-
       }
     } else if (mediumMode.classList.contains("buttonSelected")) {
       quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
