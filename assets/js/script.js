@@ -748,6 +748,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
             nextQuestionBtn.disabled = false;
           }
+
+          /**  
+           * Clears any previous feedback from answers
+           * Assigns CSS right/wrong classes to provide visual
+           * feedback about correctness/wrongness of answers
+           */
+          function setStatusClass(element, correct) {
+            clearStatusClass(element);
+            if (correct) {
+                element.classList.add('right');
+            } else {
+                element.classList.add('wrong');
+            }
+          }
+          
           //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app             
       } else if (mediumMode.classList.contains("buttonSelected")) {
           quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
