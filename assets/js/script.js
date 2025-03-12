@@ -712,6 +712,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
       //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
       shuffledQuestions = easyQuestionsList.sort(() => Math.random() - 0.5);
+      counter = 1;
       currentQuestionIndex = 0;
       setNextQuestion();
 
@@ -723,7 +724,7 @@ document.addEventListener("DOMContentLoaded", function () {
        * Displays question and its answers
        */
       function showQuestion(question) {
-        questionCounter.innerText = `Question ${currentQuestionIndex}/5`;
+        questionCounter.innerText = `Question ${counter}/5`;
         questionText.innerText = question.question;
         question.answers.forEach(answer => {
             const button = document.createElement('button');
@@ -755,16 +756,25 @@ document.addEventListener("DOMContentLoaded", function () {
           nextQuestionBtn.disabled = false;
         }
 
+        //Add clicking effect on Next Question button which allows navigation through quiz
         nextQuestionBtn.addEventListener("click", function () {
+          counter++;
           currentQuestionIndex++;
           setNextQuestion();
         })
 
+        /**  
+         * Triggers reset quizWindow for new question
+         * Allows a new question and its possible answers to be displayed in the quizWindow
+         */
         function setNextQuestion() {
           resetState();
           showQuestion(shuffledQuestions[currentQuestionIndex]);
         }
 
+        /**  
+         * 
+         */
         function resetState() {
           clearStatusClass(document.body);
           nextQuestionBtn.disabled = true;
