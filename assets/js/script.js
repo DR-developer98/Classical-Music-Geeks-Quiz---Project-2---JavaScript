@@ -731,6 +731,23 @@ document.addEventListener("DOMContentLoaded", function () {
               answersContainer.appendChild(button);
             })
           }
+
+          /** 
+           * Disables all answer buttons as soon as a choice is made and
+           * applies visual styling to provide feedback (right or wrong answer) 
+           * to the user
+           */
+          function selectAnswer(clickedButton) {
+            Array.from(answersContainer.children).forEach(button => {
+                button.disabled = true;
+                setStatusClass(button, button.dataset.correct);
+            });
+          
+            const correct = clickedButton.dataset.correct;
+            setStatusClass(clickedButton, correct);
+
+            nextQuestionBtn.disabled = false;
+          }
           //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app             
       } else if (mediumMode.classList.contains("buttonSelected")) {
           quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
