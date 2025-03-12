@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const startQuizButton = document.getElementById("startQuiz");
 
   /**
-   * Shows the three mode buttons after clicking on "Choose mode" 
+   * Shows the three mode buttons after clicking on "Choose mode"
    */
   function showModes(e) {
     const form = e.target;
@@ -82,517 +82,610 @@ document.addEventListener("DOMContentLoaded", function () {
   //↓QUESTION POOLS FOR THE DIFFERENT MODES↓
   const easyQuestionsList = [
     {
-      questionText: "Who composed the 'Für Elise'?",
-      answer1: "Johann Sebastian Bach",
-      answer2: "Wolfgang Amadeus Mozart",
-      correct: "Ludwig van Beethoven", // correct
-      answer3: "Franz Schubert",
+      question: "Who composed the 'Für Elise'?",
+      answers: [
+        { text: "Johann Sebastian Bach", correct: false },
+        { text: "Wolfgang Amadeus Mozart", correct: false },
+        { text: "Ludwig van Beethoven", correct: true },
+        { text: "Franz Schubert", correct: false },
+      ],
     },
     {
-      questionText: "Which composer wrote 'The Four Seasons'?",
-      correct: "Antonio Vivaldi", // correct
-      answer1: "Johannes Brahms",
-      answer2: "Frederic Chopin",
-      answer3: "Giuseppe Verdi",
+      question: "Which composer wrote 'The Four Seasons'?",
+      answers: [
+        { text: "Johannes Brahms", correct: false },
+        { text: "Frederic Chopin", correct: false },
+        { text: "Antonio Vivaldi", correct: true },
+        { text: "Giuseppe Verdi", correct: false },
+      ],
     },
     {
-      questionText: "The opera 'Carmen' was composed by?",
-      correct: "Georges Bizet", // correct
-      answer1: "Gioachino Rossini",
-      answer2: "Richard Wagner",
-      answer3: "Franz Liszt",
+      question: "The opera 'Carmen' was composed by?",
+      answers: [
+        { text: "Gioachino Rossini", correct: false },
+        { text: "Richard Wagner", correct: false },
+        { text: "Georges Bizet", correct: true },
+        { text: "Franz Liszt", correct: false },
+      ],
     },
     {
-      questionText: "Which composer was known as the 'Waltz King'?",
-      answer1: "Franz Schubert",
-      correct: "Johann Strauss II", // correct
-      answer2: "Richard Strauss",
-      answer3: "Franz Joseph Haydn",
+      question: "Which composer was known as the 'Waltz King'?",
+      answers: [
+        { text: "Franz Schubert", correct: false },
+        { text: "Richard Strauss", correct: false },
+        { text: "Johann Strauss II", correct: true },
+        { text: "Franz Joseph Haydn", correct: false },
+      ],
     },
     {
-      questionText: "Who composed the 'Moonlight Sonata'?",
-      correct: "Ludwig van Beethoven", // correct
-      answer1: "Wolfgang Amadeus Mozart",
-      answer2: "Franz Schubert",
-      answer3: "Johann Sebastian Bach",
+      question: "Who composed the 'Moonlight Sonata'?",
+      answers: [
+        { text: "Wolfgang Amadeus Mozart", correct: false },
+        { text: "Franz Schubert", correct: false },
+        { text: "Ludwig van Beethoven", correct: true },
+        { text: "Johann Sebastian Bach", correct: false },
+      ],
     },
     {
-      questionText: "Who composed the ballet 'The Nutcracker'?",
-      answer1: "Igor Stravinsky",
-      correct: "Pyotr Ilyich Tchaikovsky", // correct
-      answer2: "Maurice Ravel",
-      answer3: "Claude Debussy",
+      question: "Who composed the ballet 'The Nutcracker'?",
+      answers: [
+        { text: "Igor Stravinsky", correct: false },
+        { text: "Pyotr Ilyich Tchaikovsky", correct: true },
+        { text: "Maurice Ravel", correct: false },
+        { text: "Claude Debussy", correct: false },
+      ],
     },
     {
-      questionText: "Which composer wrote 'Eine kleine Nachtmusik'?",
-      answer1: "Ludwig van Beethoven",
-      answer2: "Johann Sebastian Bach",
-      correct: "Wolfgang Amadeus Mozart", // correct
-      answer3: "Joseph Haydn",
+      question: "Which composer wrote 'Eine kleine Nachtmusik'?",
+      answers: [
+        { text: "Ludwig van Beethoven", correct: false },
+        { text: "Johann Sebastian Bach", correct: false },
+        { text: "Wolfgang Amadeus Mozart", correct: true },
+        { text: "Joseph Haydn", correct: false },
+      ],
     },
     {
-      questionText: "The 'Hallelujah Chorus' is part of which oratorio?",
-      answer1: "The Creation",
-      correct: "Messiah", // correct
-      answer2: "Elijah",
-      answer3: "Requiem",
+      question: "The 'Hallelujah Chorus' is part of which oratorio?",
+      answers: [
+        { text: "The Creation", correct: false },
+        { text: "Messiah", correct: true },
+        { text: "Elijah", correct: false },
+        { text: "Requiem", correct: false },
+      ],
     },
     {
-      questionText: "Who composed the 'William Tell Overture'?",
-      correct: "Gioachino Rossini", // correct
-      answer1: "Antonio Vivaldi",
-      answer2: "George Frideric Handel",
-      answer3: "Ludwig van Beethoven",
+      question: "Who composed the 'William Tell Overture'?",
+      answers: [
+        { text: "Antonio Vivaldi", correct: false },
+        { text: "George Frideric Handel", correct: false },
+        { text: "Gioachino Rossini", correct: true },
+        { text: "Ludwig van Beethoven", correct: false },
+      ],
     },
     {
-      questionText: "Who composed 'The Blue Danube'?",
-      correct: "Johann Strauss II", // correct
-      answer1: "Johann Sebastian Bach",
-      answer2: "Wolfgang Amadeus Mozart",
-      answer3: "Franz Schubert",
+      question: "Who composed 'The Blue Danube'?",
+      answers: [
+        { text: "Johann Sebastian Bach", correct: false },
+        { text: "Wolfgang Amadeus Mozart", correct: false },
+        { text: "Johann Strauss II", correct: true },
+        { text: "Franz Schubert", correct: false },
+      ],
     },
     {
-      questionText: "Who wrote the 'Brandenburg Concertos'?",
-      correct: "Johann Sebastian Bach", // correct
-      answer1: "Ludwig van Beethoven",
-      answer2: "Joseph Haydn",
-      answer3: "Antonio Vivaldi",
+      question: "Who wrote the 'Brandenburg Concertos'?",
+      answers: [
+        { text: "Ludwig van Beethoven", correct: false },
+        { text: "Joseph Haydn", correct: false },
+        { text: "Johann Sebastian Bach", correct: true },
+        { text: "Antonio Vivaldi", correct: false },
+      ],
     },
     {
-      questionText: "Who composed 'Boléro'?",
-      correct: "Maurice Ravel", // correct
-      answer1: "Claude Debussy",
-      answer2: "Igor Stravinsky",
-      answer3: "Sergei Prokofiev",
+      question: "Who composed 'Boléro'?",
+      answers: [
+        { text: "Claude Debussy", correct: false },
+        { text: "Igor Stravinsky", correct: false },
+        { text: "Maurice Ravel", correct: true },
+        { text: "Sergei Prokofiev", correct: false },
+      ],
     },
     {
-      questionText:
-        "Who composed the 'Symphony No. 9 in D minor' (Ode to Joy)?",
-      correct: "Ludwig van Beethoven", // correct
-      answer1: "Johannes Brahms",
-      answer2: "Franz Schubert",
-      answer3: "Felix Mendelssohn",
+      question: "Who composed the 'Symphony No. 9 in D minor' (Ode to Joy)?",
+      answers: [
+        { text: "Johannes Brahms", correct: false },
+        { text: "Franz Schubert", correct: false },
+        { text: "Ludwig van Beethoven", correct: true },
+        { text: "Felix Mendelssohn", correct: false },
+      ],
     },
     {
-      questionText: "Who composed the 'Carnival of the Animals'?",
-      correct: "Camille Saint-Saëns", // correct
-      answer1: "Claude Debussy",
-      answer2: "Gabriel Fauré",
-      answer3: "Hector Berlioz",
+      question: "Who composed the 'Carnival of the Animals'?",
+      answers: [
+        { text: "Claude Debussy", correct: false },
+        { text: "Gabriel Fauré", correct: false },
+        { text: "Camille Saint-Saëns", correct: true },
+        { text: "Hector Berlioz", correct: false },
+      ],
     },
     {
-      questionText: "Which composer wrote 'Piano Sonata No. 16 in C Major'?",
-      answer1: "Ludwig van Beethoven",
-      answer2: "Johann Sebastian Bach",
-      answer3: "Franz Schubert",
-      correct: "Wolfgang Amadeus Mozart", // correct
+      question: "Which composer wrote 'Piano Sonata No. 16 in C Major'?",
+      answers: [
+        { text: "Ludwig van Beethoven", correct: false },
+        { text: "Johann Sebastian Bach", correct: false },
+        { text: "Franz Schubert", correct: false },
+        { text: "Wolfgang Amadeus Mozart", correct: true },
+      ],
     },
   ];
   const mediumQuestionsList = [
     {
-      questionText: "Which composer is known for his 'Canon in D'?",
-      answer1: "Johann Pachelbel", // correct
-      answer2: "Johann Sebastian Bach",
-      answer3: "Antonio Vivaldi",
-      answer4: "George Frideric Handel",
+      question: "Which composer is known for his 'Canon in D'?",
+      answers: [
+        { text: "Johann Pachelbel", correct: true },
+        { text: "Johann Sebastian Bach", correct: false },
+        { text: "Antonio Vivaldi", correct: false },
+        { text: "George Frideric Handel", correct: false },
+      ],
     },
     {
-      questionText: "In which year was Ludwig van Beethoven born?",
-      answer1: "1750",
-      answer2: "1770", // correct
-      answer3: "1790",
-      answer4: "1810",
+      question: "In which year was Ludwig van Beethoven born?",
+      answers: [
+        { text: "1750", correct: false },
+        { text: "1770", correct: true },
+        { text: "1790", correct: false },
+        { text: "1810", correct: false },
+      ],
     },
     {
-      questionText:
-        "Which instrument did Frederic Chopin primarily compose for?",
-      answer1: "Violin",
-      answer2: "Piano", // correct
-      answer3: "Cello",
-      answer4: "Flute",
+      question: "Which instrument did Frederic Chopin primarily compose for?",
+      answers: [
+        { text: "Violin", correct: false },
+        { text: "Piano", correct: true },
+        { text: "Cello", correct: false },
+        { text: "Flute", correct: false },
+      ],
     },
     {
-      questionText:
-        "Which composer is associated with the term 'Impressionism'?",
-      answer1: "Johannes Brahms",
-      answer2: "Claude Debussy", // correct
-      answer3: "Franz Liszt",
-      answer4: "Ludwig van Beethoven",
+      question: "Which composer is associated with the term 'Impressionism'?",
+      answers: [
+        { text: "Johannes Brahms", correct: false },
+        { text: "Claude Debussy", correct: true },
+        { text: "Franz Liszt", correct: false },
+        { text: "Ludwig van Beethoven", correct: false },
+      ],
     },
     {
-      questionText:
+      question:
         "The 'Rite of Spring' caused a riot at its premiere in 1913. Who composed it?",
-      answer1: "Igor Stravinsky", // correct
-      answer2: "Sergei Rachmaninoff",
-      answer3: "Maurice Ravel",
-      answer4: "Gustav Holst",
+      answers: [
+        { text: "Igor Stravinsky", correct: true },
+        { text: "Sergei Rachmaninoff", correct: false },
+        { text: "Maurice Ravel", correct: false },
+        { text: "Gustav Holst", correct: false },
+      ],
     },
     {
-      questionText:
+      question:
         "Which composer famously began losing his hearing in his late 20s?",
-      answer1: "Ludwig van Beethoven", // correct
-      answer2: "Wolfgang Amadeus Mozart",
-      answer3: "Franz Schubert",
-      answer4: "Joseph Haydn",
+      answers: [
+        { text: "Ludwig van Beethoven", correct: true },
+        { text: "Wolfgang Amadeus Mozart", correct: false },
+        { text: "Franz Schubert", correct: false },
+        { text: "Joseph Haydn", correct: false },
+      ],
     },
     {
-      questionText:
+      question:
         "The 'Carnival of the Animals' is a work by which French composer?",
-      answer1: "Camille Saint-Saëns", // correct
-      answer2: "Claude Debussy",
-      answer3: "Maurice Ravel",
-      answer4: "Gabriel Fauré",
+      answers: [
+        { text: "Camille Saint-Saëns", correct: true },
+        { text: "Claude Debussy", correct: false },
+        { text: "Maurice Ravel", correct: false },
+        { text: "Gabriel Fauré", correct: false },
+      ],
     },
     {
-      questionText: "Who composed the opera 'Madama Butterfly'?",
-      answer1: "Giacomo Puccini", // correct
-      answer2: "Giuseppe Verdi",
-      answer3: "Richard Wagner",
-      answer4: "Ludwig van Beethoven",
+      question: "Who composed the opera 'Madama Butterfly'?",
+      answers: [
+        { text: "Giacomo Puccini", correct: true },
+        { text: "Giuseppe Verdi", correct: false },
+        { text: "Richard Wagner", correct: false },
+        { text: "Ludwig van Beethoven", correct: false },
+      ],
     },
     {
-      questionText:
-        "Which symphony is often referred to as 'Beethoven's Tenth'?",
-      answer1: "Brahms' Symphony No. 1", // correct
-      answer2: "Schubert's Symphony No. 8",
-      answer3: "Tchaikovsky's Symphony No. 6",
-      answer4: "Dvorak's Symphony No. 9",
+      question: "Which symphony is often referred to as 'Beethoven's Tenth'?",
+      answers: [
+        { text: "Brahms' Symphony No. 1", correct: true },
+        { text: "Schubert's Symphony No. 8", correct: false },
+        { text: "Tchaikovsky's Symphony No. 6", correct: false },
+        { text: "Dvorak's Symphony No. 9", correct: false },
+      ],
     },
     {
-      questionText: "Which composer wrote the piece 'Gymnopédies'?",
-      answer1: "Erik Satie", // correct
-      answer2: "Claude Debussy",
-      answer3: "Maurice Ravel",
-      answer4: "Gabriel Fauré",
+      question: "Which composer wrote the piece 'Gymnopédies'?",
+      answers: [
+        { text: "Erik Satie", correct: true },
+        { text: "Claude Debussy", correct: false },
+        { text: "Maurice Ravel", correct: false },
+        { text: "Gabriel Fauré", correct: false },
+      ],
     },
     {
-      questionText:
+      question:
         "Which composer was a child prodigy and wrote his first symphony at age 8?",
-      answer1: "Franz Schubert",
-      answer2: "Ludwig van Beethoven",
-      answer3: "Wolfgang Amadeus Mozart", // correct
-      answer4: "Felix Mendelssohn",
+      answers: [
+        { text: "Franz Schubert", correct: false },
+        { text: "Ludwig van Beethoven", correct: false },
+        { text: "Wolfgang Amadeus Mozart", correct: true },
+        { text: "Felix Mendelssohn", correct: false },
+      ],
     },
     {
-      questionText:
-        "The 'Brandenburg Concertos' were dedicated to which patron?",
-      answer1: "Duke of Weimar",
-      answer2: "Margrave of Brandenburg", // correct
-      answer3: "Elector of Saxony",
-      answer4: "Prince of Anhalt-Köthen",
+      question: "The 'Brandenburg Concertos' were dedicated to which patron?",
+      answers: [
+        { text: "Duke of Weimar", correct: false },
+        { text: "Margrave of Brandenburg", correct: true },
+        { text: "Elector of Saxony", correct: false },
+        { text: "Prince of Anhalt-Köthen", correct: false },
+      ],
     },
     {
-      questionText: "Which composer wrote 'Carmina Burana'?",
-      answer1: "Carl Orff", // correct
-      answer2: "Richard Strauss",
-      answer3: "Gustav Mahler",
-      answer4: "Anton Bruckner",
+      question: "Which composer wrote 'Carmina Burana'?",
+      answers: [
+        { text: "Carl Orff", correct: true },
+        { text: "Richard Strauss", correct: false },
+        { text: "Gustav Mahler", correct: false },
+        { text: "Anton Bruckner", correct: false },
+      ],
     },
     {
-      questionText: "Which piece features the famous 'Ode to Joy' theme?",
-      answer1: "Beethoven's Symphony No. 9", // correct
-      answer2: "Mozart's Symphony No. 40",
-      answer3: "Haydn's Symphony No. 94",
-      answer4: "Brahms' Symphony No. 1",
+      question: "Which piece features the famous 'Ode to Joy' theme?",
+      answers: [
+        { text: "Beethoven's Symphony No. 9", correct: true },
+        { text: "Mozart's Symphony No. 40", correct: false },
+        { text: "Haydn's Symphony No. 94", correct: false },
+        { text: "Brahms' Symphony No. 1", correct: false },
+      ],
     },
     {
-      questionText: "Which composer is known for his 'Hungarian Rhapsodies'?",
-      answer1: "Franz Liszt", // correct
-      answer2: "Bela Bartok",
-      answer3: "Antonin Dvorak",
-      answer4: "Johannes Brahms",
+      question: "Which composer is known for his 'Hungarian Rhapsodies'?",
+      answers: [
+        { text: "Franz Liszt", correct: true },
+        { text: "Bela Bartok", correct: false },
+        { text: "Antonin Dvorak", correct: false },
+        { text: "Johannes Brahms", correct: false },
+      ],
     },
     {
-      questionText:
+      question:
         "The 'Planets' suite by Gustav Holst contains how many movements?",
-      answer1: "5",
-      answer2: "7", // correct
-      answer3: "9",
-      answer4: "11",
+      answers: [
+        { text: "5", correct: false },
+        { text: "7", correct: true },
+        { text: "9", correct: false },
+        { text: "11", correct: false },
+      ],
     },
     {
-      questionText: "Which composer is known for his twelve-tone technique?",
-      answer1: "Igor Stravinsky",
-      answer2: "Arnold Schoenberg", // correct
-      answer3: "Sergei Prokofiev",
-      answer4: "Richard Strauss",
+      question: "Which composer is known for his twelve-tone technique?",
+      answers: [
+        { text: "Igor Stravinsky", correct: false },
+        { text: "Arnold Schoenberg", correct: true },
+        { text: "Sergei Prokofiev", correct: false },
+        { text: "Richard Strauss", correct: false },
+      ],
     },
     {
-      questionText:
+      question:
         "The 'Enigma Variations' are a set of variations by which composer?",
-      answer1: "Ralph Vaughan Williams",
-      answer2: "Edward Elgar", // correct
-      answer3: "Benjamin Britten",
-      answer4: "Frederick Delius",
+      answers: [
+        { text: "Ralph Vaughan Williams", correct: false },
+        { text: "Edward Elgar", correct: true },
+        { text: "Benjamin Britten", correct: false },
+        { text: "Frederick Delius", correct: false },
+      ],
     },
     {
-      questionText: "Which opera by Giuseppe Verdi is set in ancient Egypt?",
-      answer1: "Rigoletto",
-      answer2: "La Traviata",
-      answer3: "Aida", // correct
-      answer4: "Otello",
+      question: "Which opera by Giuseppe Verdi is set in ancient Egypt?",
+      answers: [
+        { text: "Rigoletto", correct: false },
+        { text: "La Traviata", correct: false },
+        { text: "Aida", correct: true },
+        { text: "Otello", correct: false },
+      ],
     },
     {
-      questionText: "Which composer wrote the ballet 'The Nutcracker'?",
-      answer1: "Pyotr Ilyich Tchaikovsky", // correct
-      answer2: "Igor Stravinsky",
-      answer3: "Sergei Prokofiev",
-      answer4: "Dmitri Shostakovich",
+      question: "Which composer wrote the ballet 'The Nutcracker'?",
+      answers: [
+        { text: "Pyotr Ilyich Tchaikovsky", correct: true },
+        { text: "Igor Stravinsky", correct: false },
+        { text: "Sergei Prokofiev", correct: false },
+        { text: "Dmitri Shostakovich", correct: false },
+      ],
     },
     {
-      questionText:
+      question:
         "The 'Symphonie fantastique' by Hector Berlioz is based on what?",
-      answer1: "A love story", // correct
-      answer2: "A mythical legend",
-      answer3: "A historical event",
-      answer4: "A philosophical treatise",
+      answers: [
+        { text: "A love story", correct: true },
+        { text: "A mythical legend", correct: false },
+        { text: "A historical event", correct: false },
+        { text: "A philosophical treatise", correct: false },
+      ],
     },
   ];
   const hardQuestionsList = [
     {
-      questionText:
-        "Which composer is known for the invention of the twelve-tone technique?",
-      answer1: "Arnold Schoenberg", // correct
-      answer2: "Igor Stravinsky",
-      answer3: "Dmitri Shostakovich",
-      answer4: "Sergei Prokofiev",
+        question: "Which composer is known for the invention of the twelve-tone technique?",
+        answers: [
+            { text: "Arnold Schoenberg", correct: true },
+            { text: "Igor Stravinsky", correct: false },
+            { text: "Dmitri Shostakovich", correct: false },
+            { text: "Sergei Prokofiev", correct: false }
+        ]
     },
     {
-      questionText:
-        "The opera 'Boris Godunov' was composed by which Russian composer?",
-      answer1: "Pyotr Ilyich Tchaikovsky",
-      answer2: "Modest Mussorgsky", // correct
-      answer3: "Nikolai Rimsky-Korsakov",
-      answer4: "Sergei Rachmaninoff",
+        question: "The opera 'Boris Godunov' was composed by which Russian composer?",
+        answers: [
+            { text: "Pyotr Ilyich Tchaikovsky", correct: false },
+            { text: "Modest Mussorgsky", correct: true },
+            { text: "Nikolai Rimsky-Korsakov", correct: false },
+            { text: "Sergei Rachmaninoff", correct: false }
+        ]
     },
     {
-      questionText: "Which piece by John Cage is famously silent?",
-      answer1: "4'33\"", // correct
-      answer2: "Sonatas and Interludes",
-      answer3: "Music of Changes",
-      answer4: "In a Landscape",
+        question: "Which piece by John Cage is famously silent?",
+        answers: [
+            { text: "4'33\"", correct: true },
+            { text: "Sonatas and Interludes", correct: false },
+            { text: "Music of Changes", correct: false },
+            { text: "In a Landscape", correct: false }
+        ]
     },
     {
-      questionText: "Which composer wrote the 'Transcendental Études'?",
-      answer1: "Franz Liszt", // correct
-      answer2: "Frédéric Chopin",
-      answer3: "Sergei Rachmaninoff",
-      answer4: "Claude Debussy",
+        question: "Which composer wrote the 'Transcendental Études'?",
+        answers: [
+            { text: "Franz Liszt", correct: true },
+            { text: "Frédéric Chopin", correct: false },
+            { text: "Sergei Rachmaninoff", correct: false },
+            { text: "Claude Debussy", correct: false }
+        ]
     },
     {
-      questionText: "Which Baroque composer wrote the 'Goldberg Variations'?",
-      answer1: "Johann Sebastian Bach", // correct
-      answer2: "George Frideric Handel",
-      answer3: "Domenico Scarlatti",
-      answer4: "Antonio Vivaldi",
+        question: "Which Baroque composer wrote the 'Goldberg Variations'?",
+        answers: [
+            { text: "Johann Sebastian Bach", correct: true },
+            { text: "George Frideric Handel", correct: false },
+            { text: "Domenico Scarlatti", correct: false },
+            { text: "Antonio Vivaldi", correct: false }
+        ]
     },
     {
-      questionText:
-        "Which opera by Richard Wagner is part of the 'Ring Cycle'?",
-      answer1: "Tristan und Isolde",
-      answer2: "Die Walküre", // correct
-      answer3: "Parsifal",
-      answer4: "Tannhäuser",
+        question: "Which opera by Richard Wagner is part of the 'Ring Cycle'?",
+        answers: [
+            { text: "Tristan und Isolde", correct: false },
+            { text: "Die Walküre", correct: true },
+            { text: "Parsifal", correct: false },
+            { text: "Tannhäuser", correct: false }
+        ]
     },
     {
-      questionText:
-        "Which composer is famous for his late-Romantic symphonies and song cycles?",
-      answer1: "Gustav Mahler", // correct
-      answer2: "Richard Strauss",
-      answer3: "Jean Sibelius",
-      answer4: "Anton Bruckner",
+        question: "Which composer is famous for his late-Romantic symphonies and song cycles?",
+        answers: [
+            { text: "Gustav Mahler", correct: true },
+            { text: "Richard Strauss", correct: false },
+            { text: "Jean Sibelius", correct: false },
+            { text: "Anton Bruckner", correct: false }
+        ]
     },
     {
-      questionText:
-        "The 'Concerto for Orchestra' was composed by which Hungarian composer?",
-      answer1: "Béla Bartók", // correct
-      answer2: "Zoltán Kodály",
-      answer3: "Franz Liszt",
-      answer4: "Ernő Dohnányi",
+        question: "The 'Concerto for Orchestra' was composed by which Hungarian composer?",
+        answers: [
+            { text: "Béla Bartók", correct: true },
+            { text: "Zoltán Kodály", correct: false },
+            { text: "Franz Liszt", correct: false },
+            { text: "Ernő Dohnányi", correct: false }
+        ]
     },
     {
-      questionText:
-        "The 'War Requiem' was composed by which 20th-century British composer?",
-      answer1: "Edward Elgar",
-      answer2: "Ralph Vaughan Williams",
-      answer3: "Benjamin Britten", // correct
-      answer4: "Frederick Delius",
+        question: "The 'War Requiem' was composed by which 20th-century British composer?",
+        answers: [
+            { text: "Edward Elgar", correct: false },
+            { text: "Ralph Vaughan Williams", correct: false },
+            { text: "Benjamin Britten", correct: true },
+            { text: "Frederick Delius", correct: false }
+        ]
     },
     {
-      questionText:
-        "Who composed the opera 'Lady Macbeth of the Mtsensk District'?",
-      answer1: "Dmitri Shostakovich", // correct
-      answer2: "Sergei Prokofiev",
-      answer3: "Igor Stravinsky",
-      answer4: "Nikolai Rimsky-Korsakov",
+        question: "Who composed the opera 'Lady Macbeth of the Mtsensk District'?",
+        answers: [
+            { text: "Dmitri Shostakovich", correct: true },
+            { text: "Sergei Prokofiev", correct: false },
+            { text: "Igor Stravinsky", correct: false },
+            { text: "Nikolai Rimsky-Korsakov", correct: false }
+        ]
     },
     {
-      questionText: "Who composed the opera 'Lulu'?",
-      answer1: "Arnold Schoenberg",
-      answer2: "Alban Berg", // correct
-      answer3: "Anton Webern",
-      answer4: "Richard Strauss",
+        question: "Who composed the opera 'Lulu'?",
+        answers: [
+            { text: "Arnold Schoenberg", correct: false },
+            { text: "Alban Berg", correct: true },
+            { text: "Anton Webern", correct: false },
+            { text: "Richard Strauss", correct: false }
+        ]
     },
     {
-      questionText:
-        "Which composer wrote the 'Symphony No. 7 in C Major, Op. 60' often called the 'Leningrad Symphony'?",
-      answer1: "Dmitri Shostakovich", // correct
-      answer2: "Sergei Prokofiev",
-      answer3: "Igor Stravinsky",
-      answer4: "Nikolai Rimsky-Korsakov",
+        question: "Which composer wrote the 'Symphony No. 7 in C Major, Op. 60' often called the 'Leningrad Symphony'?",
+        answers: [
+            { text: "Dmitri Shostakovich", correct: true },
+            { text: "Sergei Prokofiev", correct: false },
+            { text: "Igor Stravinsky", correct: false },
+            { text: "Nikolai Rimsky-Korsakov", correct: false }
+        ]
     },
     {
-      questionText:
-        "Which late Romantic composer is known for his tone poems such as 'Also sprach Zarathustra' and 'Don Juan'?",
-      answer1: "Gustav Mahler",
-      answer2: "Anton Bruckner",
-      answer3: "Richard Strauss", // correct
-      answer4: "Johannes Brahms",
+        question: "Which late Romantic composer is known for his tone poems such as 'Also sprach Zarathustra' and 'Don Juan'?",
+        answers: [
+            { text: "Gustav Mahler", correct: false },
+            { text: "Anton Bruckner", correct: false },
+            { text: "Richard Strauss", correct: true },
+            { text: "Johannes Brahms", correct: false }
+        ]
+    }, 
+    {
+        question: "The 'Symphony No. 8 in E-flat major' is often referred to as the 'Symphony of a Thousand'. Who composed it?",
+        answers: [
+            { text: "Gustav Mahler", correct: true },
+            { text: "Anton Bruckner", correct: false },
+            { text: "Richard Strauss", correct: false },
+            { text: "Johannes Brahms", correct: false }
+        ]
     },
     {
-      questionText:
-        "The 'Symphony No. 8 in E-flat major' is often referred to as the 'Symphony of a Thousand'. Who composed it?",
-      answer1: "Gustav Mahler", // correct
-      answer2: "Anton Bruckner",
-      answer3: "Richard Strauss",
-      answer4: "Johannes Brahms",
+        question: "Who wrote the 'Makrokosmos' series for solo piano?",
+        answers: [
+            { text: "John Cage", correct: false },
+            { text: "George Crumb", correct: true },
+            { text: "Elliott Carter", correct: false },
+            { text: "Charles Ives", correct: false }
+        ]
     },
     {
-      questionText: "Who wrote the 'Makrokosmos' series for solo piano?",
-      answer1: "John Cage",
-      answer2: "George Crumb", // correct
-      answer3: "Elliott Carter",
-      answer4: "Charles Ives",
+        question: "Which Baroque composer wrote the opera 'Rinaldo'?",
+        answers: [
+            { text: "George Frideric Handel", correct: true },
+            { text: "Johann Sebastian Bach", correct: false },
+            { text: "Antonio Vivaldi", correct: false },
+            { text: "Domenico Scarlatti", correct: false }
+        ]
     },
     {
-      questionText: "Which Baroque composer wrote the opera 'Rinaldo'?",
-      answer1: "George Frideric Handel", // correct
-      answer2: "Johann Sebastian Bach",
-      answer3: "Antonio Vivaldi",
-      answer4: "Domenico Scarlatti",
+        question: "Who composed the 'Sinfonia Antarctica'?",
+        answers: [
+            { text: "Ralph Vaughan Williams", correct: true },
+            { text: "Edward Elgar", correct: false },
+            { text: "Benjamin Britten", correct: false },
+            { text: "William Walton", correct: false }
+        ]
     },
     {
-      questionText: "Who composed the 'Sinfonia Antarctica'?",
-      answer1: "Ralph Vaughan Williams", // correct
-      answer2: "Edward Elgar",
-      answer3: "Benjamin Britten",
-      answer4: "William Walton",
+        question: "Which composer wrote the opera 'The Rake's Progress'?",
+        answers: [
+            { text: "Igor Stravinsky", correct: true },
+            { text: "Sergei Prokofiev", correct: false },
+            { text: "Dmitri Shostakovich", correct: false },
+            { text: "Benjamin Britten", correct: false }
+        ]
     },
     {
-      questionText: "Which composer wrote the opera 'The Rake's Progress'?",
-      answer1: "Igor Stravinsky", // correct
-      answer2: "Sergei Prokofiev",
-      answer3: "Dmitri Shostakovich",
-      answer4: "Benjamin Britten",
+        question: "Who composed the 'Symphony No. 3 in C minor, Op. 78', known as the 'Organ Symphony'?",
+        answers: [
+            { text: "Camille Saint-Saëns", correct: true },
+            { text: "Hector Berlioz", correct: false },
+            { text: "César Franck", correct: false },
+            { text: "Gabriel Fauré", correct: false }
+        ]
     },
     {
-      questionText:
-        "Who composed the 'Symphony No. 3 in C minor, Op. 78', known as the 'Organ Symphony'?",
-      answer1: "Camille Saint-Saëns", // correct
-      answer2: "Hector Berlioz",
-      answer3: "César Franck",
-      answer4: "Gabriel Fauré",
+        question: "Which composer is known for his cycle of piano works titled 'Miroirs'?",
+        answers: [
+            { text: "Claude Debussy", correct: false },
+            { text: "Erik Satie", correct: false },
+            { text: "Maurice Ravel", correct: true }
+        ]
     },
     {
-      questionText:
-        "Which composer is known for his cycle of piano works titled 'Miroirs'?",
-      answer1: "Claude Debussy",
-      answer2: "Erik Satie",
-      answer3: "Maurice Ravel",
+        question: "The 'Variations on a Theme of Paganini' is a work for piano composed by?",
+        answers: [
+            { text: "Franz Liszt", correct: false },
+            { text: "Sergei Rachmaninoff", correct: true },
+            { text: "Frederic Chopin", correct: false },
+            { text: "Johannes Brahms", correct: false }
+        ]
     },
     {
-      questionText:
-        "The 'Variations on a Theme of Paganini' is a work for piano composed by?",
-      answer1: "Franz Liszt",
-      answer2: "Sergei Rachmaninoff", // correct
-      answer3: "Frederic Chopin",
-      answer4: "Johannes Brahms",
+        question: "Which composer wrote the orchestral suite 'The Planets'?",
+        answers: [
+            { text: "Gustav Mahler", correct: false },
+            { text: "Igor Stravinsky", correct: false },
+            { text: "Gustav Holst", correct: true },
+            { text: "Richard Strauss", correct: false }
+        ]
     },
     {
-      questionText: "Which composer wrote the orchestral suite 'The Planets'?",
-      answer1: "Gustav Mahler",
-      answer2: "Igor Stravinsky",
-      answer3: "Gustav Holst", // correct
-      answer4: "Richard Strauss",
+        question: "The opera 'Peter Grimes' was composed by which 20th-century composer?",
+        answers: [
+            { text: "Benjamin Britten", correct: true },
+            { text: "Ralph Vaughan Williams", correct: false },
+            { text: "William Walton", correct: false },
+            { text: "Edward Elgar", correct: false }
+        ]
     },
     {
-      questionText:
-        "The opera 'Peter Grimes' was composed by which 20th-century composer?",
-      answer1: "Benjamin Britten", // correct
-      answer2: "Ralph Vaughan Williams",
-      answer3: "William Walton",
-      answer4: "Edward Elgar",
+        question: "Who composed the 'Three Places in New England'?",
+        answers: [
+            { text: "Charles Ives", correct: true },
+            { text: "Aaron Copland", correct: false },
+            { text: "Samuel Barber", correct: false },
+            { text: "John Adams", correct: false }
+        ]
     },
     {
-      questionText: "Who composed the 'Three Places in New England'?",
-      answer1: "Charles Ives", // correct
-      answer2: "Aaron Copland",
-      answer3: "Samuel Barber",
-      answer4: "John Adams",
+        question: "Which symphony is known as the 'Pathetique Symphony'?",
+        answers: [
+            { text: "Tchaikovsky's Symphony No. 6", correct: true },
+            { text: "Beethoven's Symphony No. 3", correct: false },
+            { text: "Mozart's Symphony No. 40", correct: false },
+            { text: "Schubert's Symphony No. 8", correct: false }
+        ]
     },
     {
-      questionText: "Which symphony is known as the 'Pathetique Symphony'?",
-      answer1: "Tchaikovsky's Symphony No. 6", // correct
-      answer2: "Beethoven's Symphony No. 3",
-      answer3: "Mozart's Symphony No. 40",
-      answer4: "Schubert's Symphony No. 8",
+        question: "Who composed the 'Symphony No. 9 in D minor, Op. 125', also known as the 'Choral Symphony'?",
+        answers: [
+            { text: "Johannes Brahms", correct: false },
+            { text: "Ludwig van Beethoven", correct: true },
+            { text: "Franz Schubert", correct: false },
+            { text: "Felix Mendelssohn", correct: false }
+        ]
     },
     {
-      questionText:
-        "Who composed the 'Symphony No. 9 in D minor, Op. 125', also known as the 'Choral Symphony'?",
-      answer1: "Johannes Brahms",
-      answer2: "Ludwig van Beethoven", // correct
-      answer3: "Franz Schubert",
-      answer4: "Felix Mendelssohn",
+        question: "The 'Symphonie espagnole' is a violin concerto by which composer?",
+        answers: [
+            { text: "Pablo de Sarasate", correct: false },
+            { text: "Camille Saint-Saëns", correct: false },
+            { text: "Ludwig van Beethoven", correct: false },
+            { text: "Edouard Lalo", correct: true }
+        ]
     },
     {
-      questionText:
-        "The 'Symphonie espagnole' is a violin concerto by which composer?",
-      answer1: "Pablo de Sarasate",
-      answer2: "Camille Saint-Saëns",
-      answer3: "Ludwig van Beethoven",
-      answer4: "Edouard Lalo", // correct
+        question: "The opera 'Die Meistersinger von Nürnberg' was written by?",
+        answers: [
+            { text: "Richard Wagner", correct: true },
+            { text: "Johann Strauss II", correct: false },
+            { text: "Giuseppe Verdi", correct: false },
+            { text: "Giacomo Puccini", correct: false }
+        ]
     },
     {
-      questionText:
-        "The opera 'Die Meistersinger von Nürnberg' was written by?",
-      answer1: "Richard Wagner", // correct
-      answer2: "Johann Strauss II",
-      answer3: "Giuseppe Verdi",
-      answer4: "Giacomo Puccini",
+        question: "Who composed the 'Six Brandenburg Concertos'?",
+        answers: [
+            { text: "Antonio Vivaldi", correct: false },
+            { text: "Johann Sebastian Bach", correct: true },
+            { text: "George Frideric Handel", correct: false },
+            { text: "Domenico Scarlatti", correct: false }
+        ]
     },
     {
-      questionText: "Who composed the 'Six Brandenburg Concertos'?",
-      answer1: "Antonio Vivaldi",
-      answer2: "Johann Sebastian Bach", // correct
-      answer3: "George Frideric Handel",
-      answer4: "Domenico Scarlatti",
-    },
-    {
-      questionText: "The 'Suite bergamasque' includes which famous piece?",
-      answer1: "Clair de Lune", // correct
-      answer2: "Arabesque",
-      answer3: "Reverie",
-      answer4: "Children's Corner",
-    },
-  ];
-
-  /*↓↓↓Fisher–Yates shuffle-> CREDIT: ChatGPT, ↓↓↓
-  https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#JavaScript_implementation;
-  */
-
-  /**
-  *Shuffles the items of an array to change their order and - therefore - their indices
-  */
-  function shuffleArray(array) {
-    for (let a = array.length - 1; a > 0; a--) {
-      const b = Math.floor(Math.random() * (a + 1));
-      [array[a], array[b]] = [array[b], array[a]];
+        question: "The 'Suite bergamasque' includes which famous piece?",
+        answers: [
+            { text: "Clair de Lune", correct: true },
+            { text: "Arabesque", correct: false },
+            { text: "Reverie", correct: false },
+            { text: "Children's Corner", correct: false }
+        ]
     }
-  }
-  /*↑↑↑Fisher-Yates shuffle -> CREDIT: ChatGPT and ↑↑↑
-  https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#JavaScript_implementation;
-  */
+  ];
 
   //Question window components
   const chosenUsername = document.getElementById("chosenUsername");
@@ -618,52 +711,7 @@ document.addEventListener("DOMContentLoaded", function () {
     quizWindow.classList.toggle("hide");
     //IF STATEMENT for choosing the right question pool
     if (easyMode.classList.contains("buttonSelected")) {
-      let q = 1;
-      questionCounter.innerText = `Question ${q}/5`;
-      for (let i = 0; i < 5; i++) {
-        let j = Math.floor(Math.random() * easyQuestionsList.length);
-
-        //↓↓↓CREDIT: ChatGPT -> Wikipedia↓↓↓
-        const answers = [
-          easyQuestionsList[j].answer1,
-          easyQuestionsList[j].answer2,
-          easyQuestionsList[j].answer3,
-          easyQuestionsList[j].correct,
-        ];
-        const correctAnswer = easyQuestionsList[j].correct;
-
-        shuffleArray(answers);
-
-        questionText.innerText = easyQuestionsList[j].questionText;
-        answer1.innerText = answers[0];
-        answer2.innerText = answers[1];
-        answer3.innerText = answers[2];
-        answer4.innerText = answers[3];
-        //↑↑↑CREDIT: ChatGPT -> Wikipedia↑↑↑
-
-        answersContainer.addEventListener("click", rightOrWrong);
-        /**
-         * Colours correct answer green and all wrong answers re
-         * when the user clicks on any of the answers
-         */
-        function rightOrWrong(e) {
-          for (let ans of allAnswers) {
-            if (ans.innerText === correctAnswer) {
-              ans.classList.toggle("right");
-            } else {
-              ans.classList.toggle("wrong");
-            }
-          }
-
-          if (e.target.innerText === correctAnswer) {
-            points++;
-          }
-          nextQuestionBtn.disabled = false;
-          nextQuestionBtn.addEventListener("click", function () {
-            i++;
-          });
-        }
-      }
+      quizWindow.innerHTML = `<h2>WELCOME TO THE EASY MODE</h2>`;
     } else if (mediumMode.classList.contains("buttonSelected")) {
       quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
     } else if (hardMode.classList.contains("buttonSelected")) {
