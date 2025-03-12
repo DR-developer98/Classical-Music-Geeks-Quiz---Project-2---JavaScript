@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const mediumMode = document.getElementById("mediumMode");
   const hardMode = document.getElementById("hardMode");
   const startQuizButton = document.getElementById("startQuiz");
+  let username;
 
   /**
    * Shows the three mode buttons after clicking on "Choose mode"
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function showModes(e) {
     const form = e.target;
     e.preventDefault();
+    username = form.username.value;
 
     for (let btn of modeButtons) {
       btn.classList.toggle("hide");
@@ -724,6 +726,7 @@ document.addEventListener("DOMContentLoaded", function () {
        * Displays question and its answers
        */
       function showQuestion(question) {
+        chosenUsername.innerText = username;
         questionCounter.innerText = `Question ${counter}/5`;
         questionText.innerText = question.question;
         question.answers.forEach(answer => {
