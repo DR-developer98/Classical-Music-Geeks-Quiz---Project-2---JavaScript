@@ -1,17 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     //------------------↓START PAGE QUIZ↓------------------
-    const allButtons = document.querySelectorAll("button");
-
-    //Adds hover effect to all buttons
-    for (let btn of allButtons) {
-      btn.addEventListener("mouseenter", function () {
-        btn.classList.add("buttonHover");
-      });
-      btn.addEventListener("mouseleave", function () {
-        btn.classList.remove("buttonHover");
-      });
-    }
-
     const startWindow = document.getElementById("startWindow");
     const quizWindow = document.getElementById("quizWindow");
     const chooseMode = document.getElementById("chooseMode");
@@ -743,8 +731,7 @@ document.addEventListener("DOMContentLoaded", function () {
               answersContainer.appendChild(button);
             })
           }
-              
-                
+          //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app             
       } else if (mediumMode.classList.contains("buttonSelected")) {
           quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
       } else if (hardMode.classList.contains("buttonSelected")) {

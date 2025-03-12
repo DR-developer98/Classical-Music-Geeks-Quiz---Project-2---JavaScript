@@ -31,7 +31,7 @@ button {
     width: 209px;
 }
 
-.buttonHover {
+button:hover {
     color: white;
     background-color: var(--button-color);
 }
