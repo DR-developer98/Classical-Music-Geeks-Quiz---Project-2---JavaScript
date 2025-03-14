@@ -699,6 +699,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const questionText = document.getElementById("questionText"); //questionElement
   const answersContainer = document.getElementById("answersContainer"); //answerButtonsElement
   const nextQuestionBtn = document.getElementById("nextQuestionBtn"); //nextButton
+  const nextBtn = document.getElementById("next"); //nextButton at the end of quiz
   let shuffledQuestions, currentQuestionIndex;
 
   startQuizButton.addEventListener("click", startQuiz);
@@ -712,7 +713,6 @@ document.addEventListener("DOMContentLoaded", function () {
     quizWindow.classList.toggle("hide");
     //IF STATEMENT for choosing the right question pool
     if (easyMode.classList.contains("buttonSelected")) {
-      
       //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
       shuffledQuestions = easyQuestionsList.sort(() => Math.random() - 0.5);
       counter = 1;
@@ -722,7 +722,7 @@ document.addEventListener("DOMContentLoaded", function () {
       function setNextQuestion() {
         showQuestion(shuffledQuestions[currentQuestionIndex]);
       }
-      //↑↑↑REDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+      //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
       /**
        * Displays question and its answers
@@ -732,111 +732,116 @@ document.addEventListener("DOMContentLoaded", function () {
         chosenUsername.innerText = username;
         questionCounter.innerText = `Question ${counter}/5`;
         questionText.innerText = question.question;
-        question.answers.forEach(answer => {
-            const button = document.createElement('button');
-            button.innerText = answer.text;
-            if (answer.correct) {
-              //Assigns each button a data attribute with correct 
-              //answers for evaluation
-                button.dataset.correct = answer.correct;
-            }
-            button.addEventListener('click', () => selectAnswer(button));
-            answersContainer.appendChild(button);
-          })
+        question.answers.forEach((answer) => {
+          const button = document.createElement("button");
+          button.innerText = answer.text;
+          if (answer.correct) {
+            //Assigns each button a data attribute with correct
+            //answers for evaluation
+            button.dataset.correct = answer.correct;
+          }
+          button.addEventListener("click", () => selectAnswer(button));
+          answersContainer.appendChild(button);
+        });
+        //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+        if (counter === 5) {
+          nextQuestionBtn.classList.toggle("hide");
         }
+      }
+      
+
+      /**
+       * Disables all answer buttons as soon as a choice is made and
+       * applies visual styling to provide feedback (right or wrong answer)
+       * to the user
+       */
+      //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+      function selectAnswer(clickedButton) {
+        Array.from(answersContainer.children).forEach((button) => {
+          button.disabled = true;
+          setStatusClass(button, button.dataset.correct);
+        });
+
+        const correct = clickedButton.dataset.correct;
+        setStatusClass(clickedButton, correct);
         //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
-        /** 
-         * Disables all answer buttons as soon as a choice is made and
-         * applies visual styling to provide feedback (right or wrong answer) 
-         * to the user
-         */
-        //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
-        function selectAnswer(clickedButton) {
-          Array.from(answersContainer.children).forEach(button => {
-              button.disabled = true;
-              setStatusClass(button, button.dataset.correct);
-          });
-        
-          const correct = clickedButton.dataset.correct;
-          setStatusClass(clickedButton, correct);
-          //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
-
-          nextQuestionBtn.disabled = false;
+        nextQuestionBtn.disabled = false;
+        if (counter === 5) {
+          setTimeout(function() {
+            nextBtn.classList.toggle("notVisible");
+          }, 500);        
+          nextBtn.addEventListener("click", endOfQuiz);
         }
+      }
 
-        //Add clicking effect on Next Question button which allows navigation through quiz
-        nextQuestionBtn.addEventListener("click", function () {
+      //Add clicking effect on Next Question button which allows navigation through quiz
+      nextQuestionBtn.addEventListener("click", function () {
           counter++;
-          if (counter > 5) {
-            nextQuestionBtn.innerText = "Next";
-            nextQuestionBtn.addEventListener("click", endOfQuiz);
-          } else {
-            currentQuestionIndex++;
-            setNextQuestion();
-          }
-        })
+          currentQuestionIndex++;
+          setNextQuestion();
+      });
 
-        /**  
-         * Triggers reset quizWindow for new question
-         * Allows a new question and its possible answers to be displayed in the quizWindow
-         */
-        //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
-        function setNextQuestion() {
-          resetState();
-          showQuestion(shuffledQuestions[currentQuestionIndex]);
-        }
-        //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+      /**
+       * Triggers reset quizWindow for new question
+       * Allows a new question and its possible answers to be displayed in the quizWindow
+       */
+      //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+      function setNextQuestion() {
+        resetState();
+        showQuestion(shuffledQuestions[currentQuestionIndex]);
+      }
+      //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
-        /**  
-         * 
-         */
-        //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
-        function resetState() {
-          clearStatusClass(document.body);
-          nextQuestionBtn.disabled = true;
-          while (answersContainer.firstChild) {
-            answersContainer.removeChild(answersContainer.firstChild);
-          }
+      /**
+       *
+       */
+      //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+      function resetState() {
+        clearStatusClass(document.body);
+        nextQuestionBtn.disabled = true;
+        while (answersContainer.firstChild) {
+          answersContainer.removeChild(answersContainer.firstChild);
         }
-        //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+      }
+      //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
-        /**  
-         * Clears any previous feedback from answers
-         * Assigns CSS right/wrong classes to provide visual
-         * feedback about correctness/wrongness of answers
-         */
-        //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
-        function setStatusClass(element, correct) {
-          clearStatusClass(element);
-          if (correct) {
-              element.classList.add('right');
-          } else {
-              element.classList.add('wrong');
-          }
-        }       
-        //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app 
-        
-        /**  
-         * Removes previous feedback from answers
-         */
-        //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
-        function clearStatusClass(element) {
-          element.classList.remove('correct');
-          element.classList.remove('wrong');
+      /**
+       * Clears any previous feedback from answers
+       * Assigns CSS right/wrong classes to provide visual
+       * feedback about correctness/wrongness of answers
+       */
+      //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+      function setStatusClass(element, correct) {
+        clearStatusClass(element);
+        if (correct) {
+          element.classList.add("right");
+        } else {
+          element.classList.add("wrong");
         }
-        //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app 
+      }
+      //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
-        function endOfQuiz() {
-          quizWindow.classList.toggle("hide");
-          endOfQuizWindow.classList.toggle("hide");
-          endOfQuizWindow.innerHTML = `<h2>Congratulations!</h2>`
-        }
-        //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app             
+      /**
+       * Removes previous feedback from answers
+       */
+      //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+      function clearStatusClass(element) {
+        element.classList.remove("correct");
+        element.classList.remove("wrong");
+      }
+      //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+
+      function endOfQuiz() {
+        quizWindow.classList.toggle("hide");
+        endOfQuizWindow.classList.toggle("hide");
+        endOfQuizWindow.innerHTML = `<h2>Congratulations!</h2>`;
+      }
+      //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
     } else if (mediumMode.classList.contains("buttonSelected")) {
-        quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
+      quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
     } else if (hardMode.classList.contains("buttonSelected")) {
-        quizWindow.innerHTML = `<h2>WELCOME TO THE HARD MODE</h2>`;
+      quizWindow.innerHTML = `<h2>WELCOME TO THE HARD MODE</h2>`;
     }
   }
 });
