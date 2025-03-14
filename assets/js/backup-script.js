@@ -595,6 +595,7 @@ document.addEventListener("DOMContentLoaded", function () {
           { text: "Claude Debussy", correct: false },
           { text: "Erik Satie", correct: false },
           { text: "Maurice Ravel", correct: true },
+          { text: "Francis Poulenc", correct: false},
         ],
       },
       {
@@ -830,11 +831,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
-      var feedbackMessage = document.getElementById("feedbackMessage");
+      const feedbackMessage = document.getElementById("feedbackMessage");
       function endOfQuiz() {
         quizWindow.classList.toggle("hide");
         endOfQuizWindow.classList.toggle("hide");
-        endOfQuizWindow.innerHTML = `<h2>Congratulations!</h2>
+        feedbackMessage.innerHTML = `<h2>Congratulations!</h2>
         <p>Your score: ${correctAnswerCounter}/${maxQuestionNumber}</p>`;
       }
 

@@ -161,6 +161,11 @@ h1 {
     visibility: hidden;
 }
 
+/*END QUIZ WINDOW SECTION*/
+#feedbackMessage {
+    text-align: center;
+}
+
 
 /*MEDIA QUERIES*/
 /*Media query for (tablests) screens 768px and larger*/
