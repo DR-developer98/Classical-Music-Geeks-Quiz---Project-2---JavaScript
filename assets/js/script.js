@@ -711,27 +711,29 @@ document.addEventListener("DOMContentLoaded", function () {
     //Hides startWindow and shows quizWindow when the user clicks on "Start the quiz"
     startWindow.classList.toggle("hide");
     quizWindow.classList.toggle("hide");
+    counter = 1;
+    //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+    currentQuestionIndex = 0;
+    correctAnswerCounter = 0;
+    //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+    
     //IF STATEMENT for choosing the right question pool
     if (easyMode.classList.contains("buttonSelected")) {
+      maxQuestionNumber = 5;
       //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
       shuffledQuestions = easyQuestionsList.sort(() => Math.random() - 0.5);
-      counter = 1;
-      currentQuestionIndex = 0;
-      correctAnswerCounter = 0;
       setNextQuestion();
 
       function setNextQuestion() {
         showQuestion(shuffledQuestions[currentQuestionIndex]);
       }
-      //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
       /**
        * Displays question and its answers
        */
-      //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
       function showQuestion(question) {
         chosenUsername.innerText = username;
-        questionCounter.innerText = `Question ${counter}/5`;
+        questionCounter.innerText = `Question ${counter}/${maxQuestionNumber}`;
         questionText.innerText = question.question;
         question.answers.forEach((answer) => {
           const button = document.createElement("button");
@@ -745,11 +747,10 @@ document.addEventListener("DOMContentLoaded", function () {
           answersContainer.appendChild(button);
         });
         //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
-        if (counter === 5) {
+        if (counter === maxQuestionNumber) {
           nextQuestionBtn.classList.toggle("hide");
         }
       }
-      
 
       /**
        * Disables all answer buttons as soon as a choice is made and
@@ -771,23 +772,23 @@ document.addEventListener("DOMContentLoaded", function () {
         //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
         nextQuestionBtn.disabled = false;
-        if (counter === 5) {
-          //↓↓↓CREDIT: freecodecamp 
+        if (counter === maxQuestionNumber) {
+          //↓↓↓CREDIT: freecodecamp
           // https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
-          setTimeout(function() {
+          setTimeout(function () {
             nextBtn.classList.toggle("notVisible");
           }, 500);
-          //↑↑↑CREDIT: freecodecamp 
-          // https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/        
+          //↑↑↑CREDIT: freecodecamp
+          // https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
           nextBtn.addEventListener("click", endOfQuiz);
         }
       }
 
       //Add clicking effect on Next Question button which allows navigation through quiz
       nextQuestionBtn.addEventListener("click", function () {
-          counter++;
-          currentQuestionIndex++;
-          setNextQuestion();
+        counter++;
+        currentQuestionIndex++;
+        setNextQuestion();
       });
 
       /**
@@ -828,12 +829,10 @@ document.addEventListener("DOMContentLoaded", function () {
           element.classList.add("wrong");
         }
       }
-      //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
       /**
        * Removes previous feedback from answers
        */
-      //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
       function clearStatusClass(element) {
         element.classList.remove("correct");
         element.classList.remove("wrong");
@@ -844,12 +843,15 @@ document.addEventListener("DOMContentLoaded", function () {
         quizWindow.classList.toggle("hide");
         endOfQuizWindow.classList.toggle("hide");
         endOfQuizWindow.innerHTML = `<h2>Congratulations!</h2>
-        <p>Your score: ${correctAnswerCounter}/5</p>`;
+        <p>Your score: ${correctAnswerCounter}/${maxQuestionNumber}</p>`;
       }
-      //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
     } else if (mediumMode.classList.contains("buttonSelected")) {
+      maxQuestionNumber = 7;
+      shuffledQuestions = mediumQuestionsList.sort(() => Math.random() - 0.5);
       quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
     } else if (hardMode.classList.contains("buttonSelected")) {
+      maxQuestionNumber = 10;
+      shuffledQuestions = hardQuestionsList.sort(() => Math.random() - 0.5);
       quizWindow.innerHTML = `<h2>WELCOME TO THE HARD MODE</h2>`;
     }
   }
