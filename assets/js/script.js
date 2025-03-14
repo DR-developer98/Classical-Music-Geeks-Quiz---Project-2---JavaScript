@@ -717,6 +717,7 @@ document.addEventListener("DOMContentLoaded", function () {
       shuffledQuestions = easyQuestionsList.sort(() => Math.random() - 0.5);
       counter = 1;
       currentQuestionIndex = 0;
+      correctAnswerCounter = 0;
       setNextQuestion();
 
       function setNextQuestion() {
@@ -763,14 +764,21 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         const correct = clickedButton.dataset.correct;
+        if (correct) {
+          correctAnswerCounter++;
+        }
         setStatusClass(clickedButton, correct);
         //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
         nextQuestionBtn.disabled = false;
         if (counter === 5) {
+          //↓↓↓CREDIT: freecodecamp 
+          // https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
           setTimeout(function() {
             nextBtn.classList.toggle("notVisible");
-          }, 500);        
+          }, 500);
+          //↑↑↑CREDIT: freecodecamp 
+          // https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/        
           nextBtn.addEventListener("click", endOfQuiz);
         }
       }
@@ -835,7 +843,8 @@ document.addEventListener("DOMContentLoaded", function () {
       function endOfQuiz() {
         quizWindow.classList.toggle("hide");
         endOfQuizWindow.classList.toggle("hide");
-        endOfQuizWindow.innerHTML = `<h2>Congratulations!</h2>`;
+        endOfQuizWindow.innerHTML = `<h2>Congratulations!</h2>
+        <p>Your score: ${correctAnswerCounter}/5</p>`;
       }
       //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
     } else if (mediumMode.classList.contains("buttonSelected")) {
