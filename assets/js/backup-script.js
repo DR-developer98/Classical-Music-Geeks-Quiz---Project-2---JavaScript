@@ -832,11 +832,22 @@ document.addEventListener("DOMContentLoaded", function () {
       //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
       const feedbackMessage = document.getElementById("feedbackMessage");
+      const homeButton = document.getElementById("home");
+      const takeAnotherQuiz = document.getElementById("takeAnotherQuiz");
       function endOfQuiz() {
         quizWindow.classList.toggle("hide");
         endOfQuizWindow.classList.toggle("hide");
         feedbackMessage.innerHTML = `<h2>Congratulations!</h2>
         <p>Your score: ${correctAnswerCounter}/${maxQuestionNumber}</p>`;
+        homeButton.addEventListener("click", function() {
+            endOfQuizWindow.classList.toggle("hide");
+            startWindow.classList.toggle("hide");
+            chooseMode.classList.toggle("buttonSelected");
+        })
+        takeAnotherQuiz.addEventListener("click", function() {
+            endOfQuizWindow.classList.toggle("hide");
+            startWindow.classList.toggle("hide");    
+        })
       }
 
       //IF STATEMENT for choosing the right question pool
@@ -850,12 +861,10 @@ document.addEventListener("DOMContentLoaded", function () {
         maxQuestionNumber = 7;
         shuffledQuestions = mediumQuestionsList.sort(() => Math.random() - 0.5);
         setNextQuestion();
-        //quizWindow.innerHTML = `<h2>WELCOME TO THE MEDIUM MODE</h2>`;
       } else if (hardMode.classList.contains("buttonSelected")) {
         maxQuestionNumber = 10;
         shuffledQuestions = hardQuestionsList.sort(() => Math.random() - 0.5);
         setNextQuestion();
-        //quizWindow.innerHTML = `<h2>WELCOME TO THE HARD MODE</h2>`;
       }
     }
   });
