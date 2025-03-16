@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   //------------------↓START PAGE QUIZ↓------------------
   const startWindow = document.getElementById("startWindow");
+  const rulesSection = document.getElementById("rules");
   const quizWindow = document.getElementById("quizWindow");
   const endOfQuizWindow = document.getElementById("endQuizWindow");
   const chooseMode = document.getElementById("chooseMode");
@@ -709,6 +710,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function startQuiz() {
     //Hides startWindow and shows quizWindow when the user clicks on "Start the quiz"
     startWindow.classList.toggle("hide");
+    startQuizButton.disabled = true;
+    startQuizButton.classList.toggle("hide-start");
     quizWindow.classList.toggle("hide");
     counter = 1;
     //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
@@ -834,6 +837,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const homeButton = document.getElementById("home");
     const takeAnotherQuiz = document.getElementById("takeAnotherQuiz");
     function endOfQuiz() {
+      nextQuestionBtn.classList.toggle("hide");
+      nextBtn.classList.toggle("notVisible");
       quizWindow.classList.toggle("hide");
       endOfQuizWindow.classList.toggle("hide");
       percentageCorrect = `${(correctAnswerCounter / maxQuestionNumber) * 100}`;
@@ -853,12 +858,15 @@ document.addEventListener("DOMContentLoaded", function () {
           btn.classList.remove("buttonSelected");
           btn.classList.toggle("hide");
         }
-        startQuizButton.disabled = true;
-        startQuizButton.classList.toggle("hide-start");
       });
       takeAnotherQuiz.addEventListener("click", function () {
         endOfQuizWindow.classList.toggle("hide");
         startWindow.classList.toggle("hide");
+        rulesSection.classList.toggle("hide");
+        startQuizButton.disabled = true;
+        for (let btn of modeButtons) {
+          btn.classList.remove("buttonSelected");
+        }
       });
     }
 

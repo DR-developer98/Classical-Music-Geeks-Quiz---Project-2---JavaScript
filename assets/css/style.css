@@ -78,11 +78,11 @@ h1 {
     margin: 10px 5px;
 }
 
-#startWindow>h2 {
+#startWindow h2 {
     text-align: center;
 }
 
-#startWindow>ol {
+#startWindow ol {
     margin-left: 20%;
 }
 
@@ -162,8 +162,12 @@ h1 {
 }
 
 /*END QUIZ WINDOW SECTION*/
-#feedbackMessage {
+#endQuizWindow {
     text-align: center;
+}
+
+#endQuizWindow > p {
+    margin: 20px;
 }
 
 
