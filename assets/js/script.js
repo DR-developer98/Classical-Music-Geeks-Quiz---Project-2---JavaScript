@@ -595,7 +595,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { text: "Claude Debussy", correct: false },
         { text: "Erik Satie", correct: false },
         { text: "Maurice Ravel", correct: true },
-        { text: "Francis Poulenc", correct: false},
+        { text: "Francis Poulenc", correct: false },
       ],
     },
     {
@@ -716,8 +716,8 @@ document.addEventListener("DOMContentLoaded", function () {
     //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
     currentQuestionIndex = 0;
     correctAnswerCounter = 0;
-    
-    /** 
+
+    /**
      * Selects next question
      */
     function setNextQuestion() {
@@ -839,15 +839,22 @@ document.addEventListener("DOMContentLoaded", function () {
       endOfQuizWindow.classList.toggle("hide");
       feedbackMessage.innerHTML = `<h2>Congratulations!</h2>
       <p>Your score: ${correctAnswerCounter}/${maxQuestionNumber}</p>`;
-      homeButton.addEventListener("click", function() {
-          endOfQuizWindow.classList.toggle("hide");
-          startWindow.classList.toggle("hide");
-          chooseMode.classList.toggle("buttonSelected");
-      })
-      takeAnotherQuiz.addEventListener("click", function() {
-          endOfQuizWindow.classList.toggle("hide");
-          startWindow.classList.toggle("hide");    
-      })
+      homeButton.addEventListener("click", function () {
+        endOfQuizWindow.classList.toggle("hide");
+        startWindow.classList.toggle("hide");
+        startForm.username.value = "";
+        chooseMode.classList.remove("buttonSelected");
+        for (let btn of modeButtons) {
+          btn.classList.remove("buttonSelected");
+          btn.classList.toggle("hide");
+        }
+        startQuizButton.disabled = true;
+        startQuizButton.classList.toggle("hide-start");
+      });
+      takeAnotherQuiz.addEventListener("click", function () {
+        endOfQuizWindow.classList.toggle("hide");
+        startWindow.classList.toggle("hide");
+      });
     }
 
     //IF STATEMENT for choosing the right question pool
