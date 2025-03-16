@@ -41,10 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    /*
-    Adds click event listener to all mode buttons, which removes the
-    "disabled" attribute from "Start the quiz" button
-    */
+    //Adds click event listener to all mode buttons, which removes the
+    //"disabled" attribute from "Start the quiz" button
     for (let btn of modeButtons) {
       btn.addEventListener("click", showStartQuizButton);
     }
@@ -832,13 +830,20 @@ document.addEventListener("DOMContentLoaded", function () {
     //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
     const feedbackMessage = document.getElementById("feedbackMessage");
+    const score = document.getElementById("score");
     const homeButton = document.getElementById("home");
     const takeAnotherQuiz = document.getElementById("takeAnotherQuiz");
     function endOfQuiz() {
       quizWindow.classList.toggle("hide");
       endOfQuizWindow.classList.toggle("hide");
-      feedbackMessage.innerHTML = `<h2>Congratulations!</h2>
-      <p>Your score: ${correctAnswerCounter}/${maxQuestionNumber}</p>`;
+      percentageCorrect = `${(correctAnswerCounter / maxQuestionNumber) * 100}`;
+      score.innerText = `${correctAnswerCounter}/${maxQuestionNumber}`;
+      if (percentageCorrect >= 60) {
+        feedbackMessage.innerText = "Well done on this one!";
+      } else {
+        feedbackMessage.innerHTML = `Looks like this was a little bit tricky!<br>
+        Don't worry, though! You've probably learnt something new :)`;
+      }
       homeButton.addEventListener("click", function () {
         endOfQuizWindow.classList.toggle("hide");
         startWindow.classList.toggle("hide");
