@@ -719,9 +719,9 @@ document.addEventListener("DOMContentLoaded", function () {
     correctAnswerCounter = 0;
 
     /**
-     * Selects next question
+     * Selects first question
      */
-    function setNextQuestion() {
+    function setFirstQuestion() {
       showQuestion(shuffledQuestions[currentQuestionIndex]);
     }
 
@@ -772,9 +772,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (counter === maxQuestionNumber) {
         //↓↓↓CREDIT: freecodecamp
         // https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
-        setTimeout(function () {
-          nextBtn.classList.toggle("notVisible");
-        }, 500);
+        //setTimeout(function () {
+          //nextBtn.classList.toggle("notVisible");
+        //}, 500);
         //↑↑↑CREDIT: freecodecamp
         //https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
         nextBtn.addEventListener("click", endOfQuiz);
@@ -785,7 +785,7 @@ document.addEventListener("DOMContentLoaded", function () {
     nextQuestionBtn.addEventListener("click", function () {
       counter++;
       currentQuestionIndex++;
-      setNextQuestion();
+      setNewQuestion();
     });
 
     /**
@@ -793,7 +793,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * Allows a new question and its possible answers to be displayed in the quizWindow
      */
     //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
-    function setNextQuestion() {
+    function setNewQuestion() {
       resetState();
       showQuestion(shuffledQuestions[currentQuestionIndex]);
     }
@@ -832,59 +832,62 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
-    const feedbackMessage = document.getElementById("feedbackMessage");
-    const score = document.getElementById("score");
-    const homeButton = document.getElementById("home");
-    const takeAnotherQuiz = document.getElementById("takeAnotherQuiz");
-    function endOfQuiz() {
-      nextQuestionBtn.classList.toggle("hide");
-      nextBtn.classList.toggle("notVisible");
-      quizWindow.classList.toggle("hide");
-      endOfQuizWindow.classList.toggle("hide");
-      percentageCorrect = `${(correctAnswerCounter / maxQuestionNumber) * 100}`;
-      score.innerText = `${correctAnswerCounter}/${maxQuestionNumber}`;
-      if (percentageCorrect >= 60) {
-        feedbackMessage.innerText = "Well done on this one!";
-      } else {
-        feedbackMessage.innerHTML = `Looks like this was a little bit tricky!<br>
-        Don't worry, though! You've probably learnt something new :)`;
-      }
-      homeButton.addEventListener("click", function () {
-        endOfQuizWindow.classList.toggle("hide");
-        startWindow.classList.toggle("hide");
-        startForm.username.value = "";
-        chooseMode.classList.remove("buttonSelected");
-        for (let btn of modeButtons) {
-          btn.classList.remove("buttonSelected");
-          btn.classList.toggle("hide");
-        }
-      });
-      takeAnotherQuiz.addEventListener("click", function () {
-        endOfQuizWindow.classList.toggle("hide");
-        startWindow.classList.toggle("hide");
-        rulesSection.classList.toggle("hide");
-        startQuizButton.disabled = true;
-        for (let btn of modeButtons) {
-          btn.classList.remove("buttonSelected");
-        }
-      });
-    }
-
     //IF STATEMENT for choosing the right question pool
     if (easyMode.classList.contains("buttonSelected")) {
       maxQuestionNumber = 5;
-      //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
       shuffledQuestions = easyQuestionsList.sort(() => Math.random() - 0.5);
-      setNextQuestion();
-      //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+      resetState();
+      setFirstQuestion();
     } else if (mediumMode.classList.contains("buttonSelected")) {
       maxQuestionNumber = 7;
       shuffledQuestions = mediumQuestionsList.sort(() => Math.random() - 0.5);
-      setNextQuestion();
+      resetState();
+      setFirstQuestion();
     } else if (hardMode.classList.contains("buttonSelected")) {
       maxQuestionNumber = 10;
       shuffledQuestions = hardQuestionsList.sort(() => Math.random() - 0.5);
-      setNextQuestion();
+      resetState();
+      setFirstQuestion();
     }
+  }
+
+  //↓↓↓END OF QUIZ WINDOW COMPONENTS↓↓↓
+  const feedbackMessage = document.getElementById("feedbackMessage");
+  const score = document.getElementById("score");
+  const homeButton = document.getElementById("home");
+  const takeAnotherQuiz = document.getElementById("takeAnotherQuiz");
+
+  function endOfQuiz() {
+    nextQuestionBtn.classList.toggle("hide");
+    nextBtn.classList.toggle("notVisible");
+    quizWindow.classList.toggle("hide");
+    endOfQuizWindow.classList.toggle("hide");
+    percentageCorrect = `${(correctAnswerCounter / maxQuestionNumber) * 100}`;
+    score.innerText = `${correctAnswerCounter}/${maxQuestionNumber}`;
+    if (percentageCorrect >= 60) {
+      feedbackMessage.innerText = "Well done on this one!";
+    } else {
+      feedbackMessage.innerHTML = `Looks like this was a little bit tricky!<br>
+      Don't worry, though! You've probably learnt something new :)`;
+    }
+    homeButton.addEventListener("click", function () {
+      endOfQuizWindow.classList.toggle("hide");
+      startWindow.classList.toggle("hide");
+      startForm.username.value = "";
+      chooseMode.classList.remove("buttonSelected");
+      for (let btn of modeButtons) {
+        btn.classList.remove("buttonSelected");
+        btn.classList.toggle("hide");
+      }
+    });
+    takeAnotherQuiz.addEventListener("click", function () {
+      endOfQuizWindow.classList.toggle("hide");
+      startWindow.classList.toggle("hide");
+      rulesSection.classList.toggle("hide");
+      startQuizButton.disabled = true;
+      for (let btn of modeButtons) {
+        btn.classList.remove("buttonSelected");
+      }
+    });
   }
 });
