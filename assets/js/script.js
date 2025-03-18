@@ -782,6 +782,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
+    /*
+    Add click effect on Next Question button which allows navigation through quiz and
+    checks whether the event listener is already added to Next Questio button. This
+    ensures the question counter isn't incremented by 2 when taking the Quiz a 2nd, 3rd,
+    nth time.
+    */
     if (!isNextListenerAdded) {
       nextQuestionBtn.addEventListener("click", function () {
         counter++;
@@ -790,12 +796,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       isNextListenerAdded = true; // Mark the listener as added
     }
-    //Add clicking effect on Next Question button which allows navigation through quiz
-    /*nextQuestionBtn.addEventListener("click", function () {
-      counter++;
-      currentQuestionIndex++;
-      setNewQuestion();
-    });*/
+    
 
     /**
      * Triggers reset quizWindow for new question
@@ -865,8 +866,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const score = document.getElementById("score");
   const homeButton = document.getElementById("home");
   homeButton.addEventListener("click", function () {
-    endOfQuizWindow.classList.toggle("hide");
-    startWindow.classList.toggle("hide");
+    endOfQuizWindow.classList.add("hide");
+    startWindow.classList.remove("hide");
     startForm.username.value = "";
     chooseMode.classList.remove("buttonSelected");
     for (let btn of modeButtons) {
@@ -876,9 +877,10 @@ document.addEventListener("DOMContentLoaded", function () {
   })
   const takeAnotherQuiz = document.getElementById("takeAnotherQuiz");
   takeAnotherQuiz.addEventListener("click", function () {
-    endOfQuizWindow.classList.toggle("hide");
-    startWindow.classList.toggle("hide");
-    rulesSection.classList.toggle("hide");
+    endOfQuizWindow.classList.add("hide");
+    startWindow.classList.remove("hide");
+    rulesSection.classList.add("hide");
+    startQuizButton.classList.toggle("hide-start");
     startQuizButton.disabled = true;
     for (let btn of modeButtons) {
       btn.classList.remove("buttonSelected");
@@ -898,24 +900,5 @@ document.addEventListener("DOMContentLoaded", function () {
       feedbackMessage.innerHTML = `Looks like this was a little bit tricky!<br>
       Don't worry, though! You've probably learnt something new :)`;
     }
-    /*homeButton.addEventListener("click", function () {
-      endOfQuizWindow.classList.toggle("hide");
-      startWindow.classList.toggle("hide");
-      startForm.username.value = "";
-      chooseMode.classList.remove("buttonSelected");
-      for (let btn of modeButtons) {
-        btn.classList.remove("buttonSelected");
-        btn.classList.toggle("hide");
-      }
-    })*/;
-    /*takeAnotherQuiz.addEventListener("click", function () {
-      endOfQuizWindow.classList.toggle("hide");
-      startWindow.classList.toggle("hide");
-      rulesSection.classList.toggle("hide");
-      startQuizButton.disabled = true;
-      for (let btn of modeButtons) {
-        btn.classList.remove("buttonSelected");
-      }
-    })*/;
   }
 });
