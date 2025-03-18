@@ -700,6 +700,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const answersContainer = document.getElementById("answersContainer"); //answerButtonsElement
   const nextQuestionBtn = document.getElementById("nextQuestionBtn"); //nextButton
   const nextBtn = document.getElementById("next"); //nextButton at the end of quiz
+  let isNextListenerAdded = false;
   let shuffledQuestions, currentQuestionIndex;
 
   startQuizButton.addEventListener("click", startQuiz);
@@ -772,21 +773,29 @@ document.addEventListener("DOMContentLoaded", function () {
       if (counter === maxQuestionNumber) {
         //↓↓↓CREDIT: freecodecamp
         // https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
-        //setTimeout(function () {
-          //nextBtn.classList.toggle("notVisible");
-        //}, 500);
+        setTimeout(function () {
+          nextBtn.classList.toggle("notVisible");
+        }, 500);
         //↑↑↑CREDIT: freecodecamp
         //https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
         nextBtn.addEventListener("click", endOfQuiz);
       }
     }
 
+    if (!isNextListenerAdded) {
+      nextQuestionBtn.addEventListener("click", function () {
+        counter++;
+        currentQuestionIndex++;
+        setNewQuestion();
+      });
+      isNextListenerAdded = true; // Mark the listener as added
+    }
     //Add clicking effect on Next Question button which allows navigation through quiz
-    nextQuestionBtn.addEventListener("click", function () {
+    /*nextQuestionBtn.addEventListener("click", function () {
       counter++;
       currentQuestionIndex++;
       setNewQuestion();
-    });
+    });*/
 
     /**
      * Triggers reset quizWindow for new question
@@ -855,7 +864,26 @@ document.addEventListener("DOMContentLoaded", function () {
   const feedbackMessage = document.getElementById("feedbackMessage");
   const score = document.getElementById("score");
   const homeButton = document.getElementById("home");
+  homeButton.addEventListener("click", function () {
+    endOfQuizWindow.classList.toggle("hide");
+    startWindow.classList.toggle("hide");
+    startForm.username.value = "";
+    chooseMode.classList.remove("buttonSelected");
+    for (let btn of modeButtons) {
+      btn.classList.remove("buttonSelected");
+      btn.classList.toggle("hide");
+    }
+  })
   const takeAnotherQuiz = document.getElementById("takeAnotherQuiz");
+  takeAnotherQuiz.addEventListener("click", function () {
+    endOfQuizWindow.classList.toggle("hide");
+    startWindow.classList.toggle("hide");
+    rulesSection.classList.toggle("hide");
+    startQuizButton.disabled = true;
+    for (let btn of modeButtons) {
+      btn.classList.remove("buttonSelected");
+    }
+  })
 
   function endOfQuiz() {
     nextQuestionBtn.classList.toggle("hide");
@@ -870,7 +898,7 @@ document.addEventListener("DOMContentLoaded", function () {
       feedbackMessage.innerHTML = `Looks like this was a little bit tricky!<br>
       Don't worry, though! You've probably learnt something new :)`;
     }
-    homeButton.addEventListener("click", function () {
+    /*homeButton.addEventListener("click", function () {
       endOfQuizWindow.classList.toggle("hide");
       startWindow.classList.toggle("hide");
       startForm.username.value = "";
@@ -879,8 +907,8 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.classList.remove("buttonSelected");
         btn.classList.toggle("hide");
       }
-    });
-    takeAnotherQuiz.addEventListener("click", function () {
+    })*/;
+    /*takeAnotherQuiz.addEventListener("click", function () {
       endOfQuizWindow.classList.toggle("hide");
       startWindow.classList.toggle("hide");
       rulesSection.classList.toggle("hide");
@@ -888,6 +916,6 @@ document.addEventListener("DOMContentLoaded", function () {
       for (let btn of modeButtons) {
         btn.classList.remove("buttonSelected");
       }
-    });
+    })*/;
   }
 });
