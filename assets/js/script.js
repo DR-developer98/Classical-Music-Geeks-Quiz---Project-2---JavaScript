@@ -896,7 +896,7 @@ document.addEventListener("DOMContentLoaded", function () {
     percentageCorrect = `${(correctAnswerCounter / maxQuestionNumber) * 100}`;
     score.innerText = `${correctAnswerCounter}/${maxQuestionNumber}`;
     if (percentageCorrect >= 60) {
-      feedbackMessage.innerText = "Well done on this one!";
+      feedbackMessage.innerText = `Well done on this one, ${username}!`;
     } else {
       feedbackMessage.innerHTML = `Looks like this was a little bit tricky!<br>
       Don't worry, though! You've probably learnt something new :)`;
