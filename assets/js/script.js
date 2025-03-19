@@ -898,7 +898,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (percentageCorrect >= 60) {
       feedbackMessage.innerText = `Well done on this one, ${username}!`;
     } else {
-      feedbackMessage.innerHTML = `Looks like this was a little bit tricky!<br>
+      feedbackMessage.innerHTML = `Looks like this was a little bit tricky, ${username}!<br>
       Don't worry, though! You've probably learnt something new :)`;
     }
   }
