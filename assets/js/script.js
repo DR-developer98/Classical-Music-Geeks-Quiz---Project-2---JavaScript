@@ -47,25 +47,24 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let btn of modeButtons) {
       btn.addEventListener("click", showStartQuizButton);
     }
+  }
+  /**
+   * Shows the start quiz button when clicking on any of the modes
+   */
+  function showStartQuizButton(e) {
+    const selectedMode = e.target;
 
-    /**
-     * Shows the start quiz button when clicking on any of the modes
-     */
-    function showStartQuizButton(e) {
-      const selectedMode = e.target;
-
-      /*
+    /*
       Assigns buttonSelected class only to the selected mode button. When clicking on any other
       mode button, the buttonSelected class will pass - as it were - from the previous mode to 
       the newly selected mode. The "Start the quiz" button will be enabled only as soon as one of 
       the modes is selected.
       */
-      for (let btn of modeButtons) {
-        btn.classList.remove("buttonSelected");
-      }
-      selectedMode.classList.add("buttonSelected");
-      startQuizButton.disabled = false;
+    for (let btn of modeButtons) {
+      btn.classList.remove("buttonSelected");
     }
+    selectedMode.classList.add("buttonSelected");
+    startQuizButton.disabled = false;
   }
 
   //---------------↓QUIZ SECTION↓-----------------
@@ -718,130 +717,6 @@ document.addEventListener("DOMContentLoaded", function () {
     //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
     currentQuestionIndex = 0;
     correctAnswerCounter = 0;
-
-    /**
-     * Selects first question
-     */
-    function setFirstQuestion() {
-      showQuestion(shuffledQuestions[currentQuestionIndex]);
-    }
-
-    /**
-     * Displays question and its answers
-     */
-    function showQuestion(question) {
-      chosenUsername.innerText = username;
-      questionCounter.innerText = `Question ${counter}/${maxQuestionNumber}`;
-      questionText.innerText = question.question;
-      question.answers.forEach((answer) => {
-        const button = document.createElement("button");
-        button.innerText = answer.text;
-        if (answer.correct) {
-          //Assigns each button a data attribute with correct
-          //answers for evaluation
-          button.dataset.correct = answer.correct;
-        }
-        button.addEventListener("click", () => selectAnswer(button));
-        answersContainer.appendChild(button);
-      });
-      //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
-      if (counter === maxQuestionNumber) {
-        nextQuestionBtn.classList.toggle("hide");
-      }
-    }
-
-    /**
-     * Disables all answer buttons as soon as a choice is made and
-     * applies visual styling to provide feedback (right or wrong answer)
-     * to the user
-     */
-    //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
-    function selectAnswer(clickedButton) {
-      Array.from(answersContainer.children).forEach((button) => {
-        button.disabled = true;
-        setStatusClass(button, button.dataset.correct);
-      });
-
-      const correct = clickedButton.dataset.correct;
-      if (correct) {
-        correctAnswerCounter++;
-      }
-      setStatusClass(clickedButton, correct);
-      //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
-
-      nextQuestionBtn.disabled = false;
-      if (counter === maxQuestionNumber) {
-        //↓↓↓CREDIT: freecodecamp
-        // https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
-        setTimeout(function () {
-          nextBtn.classList.toggle("notVisible");
-        }, 500);
-        //↑↑↑CREDIT: freecodecamp
-        //https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
-        nextBtn.addEventListener("click", endOfQuiz);
-      }
-    }
-
-    /*
-    Add click effect on Next Question button which allows navigation through quiz and
-    checks whether the event listener is already added to Next Questio button. This
-    ensures the question counter isn't incremented by 2 when taking the Quiz a 2nd, 3rd,
-    nth time.
-    */
-    if (!isNextListenerAdded) {
-      nextQuestionBtn.addEventListener("click", function () {
-        counter++;
-        currentQuestionIndex++;
-        setNewQuestion();
-      });
-      isNextListenerAdded = true; // Mark the listener as added
-    }
-    
-
-    /**
-     * Triggers reset quizWindow for new question
-     * Allows a new question and its possible answers to be displayed in the quizWindow
-     */
-    //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
-    function setNewQuestion() {
-      resetState();
-      showQuestion(shuffledQuestions[currentQuestionIndex]);
-    }
-
-    /**
-     *
-     */
-    function resetState() {
-      clearStatusClass(document.body);
-      nextQuestionBtn.disabled = true;
-      while (answersContainer.firstChild) {
-        answersContainer.removeChild(answersContainer.firstChild);
-      }
-    }
-
-    /**
-     * Clears any previous feedback from answers
-     * Assigns CSS right/wrong classes to provide visual
-     * feedback about correctness/wrongness of answers
-     */
-    function setStatusClass(element, correct) {
-      clearStatusClass(element);
-      if (correct) {
-        element.classList.add("right");
-      } else {
-        element.classList.add("wrong");
-      }
-    }
-
-    /**
-     * Removes previous feedback from answers
-     */
-    function clearStatusClass(element) {
-      element.classList.remove("correct");
-      element.classList.remove("wrong");
-    }
-    //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
-
     //IF STATEMENT for choosing the right question pool
     if (easyMode.classList.contains("buttonSelected")) {
       maxQuestionNumber = 5;
@@ -860,6 +735,127 @@ document.addEventListener("DOMContentLoaded", function () {
       setFirstQuestion();
     }
   }
+  /**
+   * Selects first question
+   */
+  function setFirstQuestion() {
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
+  }
+
+  /**
+   * Displays question and its answers
+   */
+  function showQuestion(question) {
+    chosenUsername.innerText = username;
+    questionCounter.innerText = `Question ${counter}/${maxQuestionNumber}`;
+    questionText.innerText = question.question;
+    question.answers.forEach((answer) => {
+      const button = document.createElement("button");
+      button.innerText = answer.text;
+      if (answer.correct) {
+        //Assigns each button a data attribute with correct
+        //answers for evaluation
+        button.dataset.correct = answer.correct;
+      }
+      button.addEventListener("click", () => selectAnswer(button));
+      answersContainer.appendChild(button);
+    });
+    //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+    if (counter === maxQuestionNumber) {
+      nextQuestionBtn.classList.toggle("hide");
+    }
+  }
+
+  /**
+   * Disables all answer buttons as soon as a choice is made and
+   * applies visual styling to provide feedback (right or wrong answer)
+   * to the user
+   */
+  //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+  function selectAnswer(clickedButton) {
+    Array.from(answersContainer.children).forEach((button) => {
+      button.disabled = true;
+      setStatusClass(button, button.dataset.correct);
+    });
+
+    const correct = clickedButton.dataset.correct;
+    if (correct) {
+      correctAnswerCounter++;
+    }
+    setStatusClass(clickedButton, correct);
+    //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+
+    nextQuestionBtn.disabled = false;
+    if (counter === maxQuestionNumber) {
+      //↓↓↓CREDIT: freecodecamp
+      // https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
+      setTimeout(function () {
+        nextBtn.classList.toggle("notVisible");
+      }, 500);
+      //↑↑↑CREDIT: freecodecamp
+      //https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
+      nextBtn.addEventListener("click", endOfQuiz);
+    }
+  }
+
+  /*
+    Add click effect on Next Question button which allows navigation through quiz and
+    checks whether the event listener is already added to Next Questio button. This
+    ensures the question counter isn't incremented by 2 when taking the Quiz a 2nd, 3rd,
+    nth time.
+    */
+  if (!isNextListenerAdded) {
+    nextQuestionBtn.addEventListener("click", function () {
+      counter++;
+      currentQuestionIndex++;
+      setNewQuestion();
+    });
+    isNextListenerAdded = true; // Mark the listener as added
+  }
+
+  /**
+   * Triggers reset quizWindow for new question
+   * Allows a new question and its possible answers to be displayed in the quizWindow
+   */
+  //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+  function setNewQuestion() {
+    resetState();
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
+  }
+
+  /**
+   *
+   */
+  function resetState() {
+    clearStatusClass(document.body);
+    nextQuestionBtn.disabled = true;
+    while (answersContainer.firstChild) {
+      answersContainer.removeChild(answersContainer.firstChild);
+    }
+  }
+
+  /**
+   * Clears any previous feedback from answers
+   * Assigns CSS right/wrong classes to provide visual
+   * feedback about correctness/wrongness of answers
+   */
+  function setStatusClass(element, correct) {
+    clearStatusClass(element);
+    if (correct) {
+      element.classList.add("right");
+    } else {
+      element.classList.add("wrong");
+    }
+  }
+
+  /**
+   * Removes previous feedback from answers
+   */
+  function clearStatusClass(element) {
+    element.classList.remove("correct");
+    element.classList.remove("wrong");
+  }
+  //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
   //↓↓↓END OF QUIZ WINDOW COMPONENTS↓↓↓
   const feedbackMessage = document.getElementById("feedbackMessage");
@@ -874,7 +870,7 @@ document.addEventListener("DOMContentLoaded", function () {
       btn.classList.remove("buttonSelected");
       btn.classList.toggle("hide");
     }
-  })
+  });
   const takeAnotherQuiz = document.getElementById("takeAnotherQuiz");
   takeAnotherQuiz.addEventListener("click", function () {
     endOfQuizWindow.classList.add("hide");
@@ -885,7 +881,7 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let btn of modeButtons) {
       btn.classList.remove("buttonSelected");
     }
-  })
+  });
 
   function endOfQuiz() {
     nextQuestionBtn.classList.toggle("hide");
