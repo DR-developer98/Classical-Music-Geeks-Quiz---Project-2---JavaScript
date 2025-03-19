@@ -700,7 +700,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextQuestionBtn = document.getElementById("nextQuestionBtn"); //nextButton
   const nextBtn = document.getElementById("next"); //nextButton at the end of quiz
   let isNextListenerAdded = false;
-  let shuffledQuestions, currentQuestionIndex;
+  let shuffledQuestions,
+    currentQuestionIndex,
+    counter,
+    correctAnswerCounter,
+    maxQuestionNumber,
+    percentageCorrect;
 
   startQuizButton.addEventListener("click", startQuiz);
 
