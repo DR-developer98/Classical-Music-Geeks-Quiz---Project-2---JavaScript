@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  //------------------↓START PAGE QUIZ↓------------------
+  //------------------↓↓↓START PAGE QUIZ↓↓↓------------------
   const startWindow = document.getElementById("startWindow");
   const rulesSection = document.getElementById("rules");
   const quizWindow = document.getElementById("quizWindow");
@@ -67,8 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
     startQuizButton.disabled = false;
   }
 
-  //---------------↓QUIZ SECTION↓-----------------
-  //↓QUESTION POOLS FOR THE DIFFERENT MODES↓
+  //---------------↓↓↓QUIZ SECTION↓↓↓-----------------
+  //↓↓↓QUESTION POOLS FOR THE DIFFERENT MODES↓↓↓
   const easyQuestionsList = [
     {
       question: "Who composed the 'Für Elise'?",
@@ -699,7 +699,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const answersContainer = document.getElementById("answersContainer"); //answerButtonsElement
   const nextQuestionBtn = document.getElementById("nextQuestionBtn"); //nextButton
   const nextBtn = document.getElementById("next"); //nextButton at the end of quiz
+  //↓↓↓ CREDIT: Microsoft Copilot ↓↓↓
   let isNextListenerAdded = false;
+  //↑↑↑ CREDIT: Microsoft Copilot ↑↑↑
   let shuffledQuestions,
     currentQuestionIndex,
     counter,
@@ -719,8 +721,9 @@ document.addEventListener("DOMContentLoaded", function () {
     startQuizButton.classList.toggle("hide-start");
     quizWindow.classList.toggle("hide");
     counter = 1;
-    //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+    //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app ↓↓↓
     currentQuestionIndex = 0;
+    //↑↑↑ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app ↑↑↑
     correctAnswerCounter = 0;
     //IF STATEMENT for choosing the right question pool
     if (easyMode.classList.contains("buttonSelected")) {
@@ -743,6 +746,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /**
    * Selects first question
    */
+  //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app ↓↓↓
   function setFirstQuestion() {
     showQuestion(shuffledQuestions[currentQuestionIndex]);
   }
@@ -776,7 +780,6 @@ document.addEventListener("DOMContentLoaded", function () {
    * applies visual styling to provide feedback (right or wrong answer)
    * to the user
    */
-  //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
   function selectAnswer(clickedButton) {
     Array.from(answersContainer.children).forEach((button) => {
       button.disabled = true;
@@ -792,12 +795,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     nextQuestionBtn.disabled = false;
     if (counter === maxQuestionNumber) {
-      //↓↓↓CREDIT: freecodecamp
+      //↓↓↓CREDIT: freecodecamp ↓↓↓
       // https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
       setTimeout(function () {
         nextBtn.classList.toggle("notVisible");
       }, 500);
-      //↑↑↑CREDIT: freecodecamp
+      //↑↑↑CREDIT: freecodecamp ↑↑↑
       //https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
       nextBtn.addEventListener("click", endOfQuiz);
     }
@@ -809,6 +812,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ensures the question counter isn't incremented by 2 when taking the Quiz a 2nd, 3rd,
     nth time.
     */
+   //↓↓↓ CREDIT: Microsoft Copilot ↓↓↓
   if (!isNextListenerAdded) {
     nextQuestionBtn.addEventListener("click", function () {
       counter++;
@@ -817,12 +821,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     isNextListenerAdded = true; // Mark the listener as added
   }
+  //↑↑↑ CREDIT: Microsoft Copilot ↑↑↑
 
   /**
    * Triggers reset quizWindow for new question
    * Allows a new question and its possible answers to be displayed in the quizWindow
    */
-  //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+  //↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app ↓↓↓
   function setNewQuestion() {
     resetState();
     showQuestion(shuffledQuestions[currentQuestionIndex]);
@@ -860,7 +865,7 @@ document.addEventListener("DOMContentLoaded", function () {
     element.classList.remove("correct");
     element.classList.remove("wrong");
   }
-  //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+  //↑↑↑ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app ↑↑↑
 
   //↓↓↓END OF QUIZ WINDOW COMPONENTS↓↓↓
   const feedbackMessage = document.getElementById("feedbackMessage");
