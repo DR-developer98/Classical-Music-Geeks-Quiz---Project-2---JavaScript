@@ -726,19 +726,15 @@ function startQuiz() {
   if (easyMode.classList.contains("buttonSelected")) {
     maxQuestionNumber = 5;
     shuffledQuestions = easyQuestionsList.sort(() => Math.random() - 0.5);
-    resetState();
-    setFirstQuestion();
   } else if (mediumMode.classList.contains("buttonSelected")) {
     maxQuestionNumber = 7;
     shuffledQuestions = mediumQuestionsList.sort(() => Math.random() - 0.5);
-    resetState();
-    setFirstQuestion();
   } else if (hardMode.classList.contains("buttonSelected")) {
     maxQuestionNumber = 10;
     shuffledQuestions = hardQuestionsList.sort(() => Math.random() - 0.5);
-    resetState();
-    setFirstQuestion();
   }
+  resetState();
+  setFirstQuestion();
 }
 /**
  * Selects first question
