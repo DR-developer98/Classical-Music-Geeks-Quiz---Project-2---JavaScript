@@ -19,6 +19,18 @@
     display: none;
 }
 
+#container {
+    background-color: rgba(64, 38, 32, 0.9);
+    border: 3px solid var(--button-color);
+    color: white;
+    font-family: var(--secondary-font);
+    font-size: 1.2rem;
+    width: 90%;
+    padding: 8px;
+    border-radius: 10px;
+    margin: 10px 5px;
+}
+
 button {
     background-color: white;
     font-size: 100%;
@@ -66,17 +78,6 @@ h1 {
     margin-top: 25%;
 }
 
-#container {
-    background-color: rgba(64, 38, 32, 0.9);
-    border: 3px solid var(--button-color);
-    color: white;
-    font-family: var(--secondary-font);
-    font-size: 1.2rem;
-    width: 90%;
-    padding: 8px;
-    border-radius: 10px;
-    margin: 10px 5px;
-}
 
 #startWindow h2 {
     text-align: center;
@@ -170,10 +171,15 @@ h1 {
     margin: 20px;
 }
 
-
 /*MEDIA QUERIES*/
 /*Media query for (tablests) screens 768px and larger*/
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 760px) {
+    /*GLOBAL RULES*/
+    #container {
+        width: 75%;
+    }
+
+
     /*START WINDOW SECTION*/
     h1 {
         margin-top: 10%;
@@ -184,4 +190,25 @@ h1 {
         width: 45%;
     }
 
+}
+
+@media screen and (min-width: 992px) {
+    /*GLOBAL RULES*/
+    #container {
+        width: 65%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    /*GLOBAL RULES*/
+    #container {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    /*GLOBAL RULES*/
+    #container {
+        width: 50%;
+    }
 }
