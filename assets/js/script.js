@@ -47,6 +47,7 @@ function showModes(e) {
     btn.addEventListener("click", showStartQuizButton);
   }
 }
+
 /**
  * Shows the start quiz button when clicking on any of the modes
  */
@@ -54,11 +55,11 @@ function showStartQuizButton(e) {
   const selectedMode = e.target;
 
   /*
-      Assigns buttonSelected class only to the selected mode button. When clicking on any other
-      mode button, the buttonSelected class will pass - as it were - from the previous mode to 
-      the newly selected mode. The "Start the quiz" button will be enabled only as soon as one of 
-      the modes is selected.
-      */
+  Assigns buttonSelected class only to the selected mode button. When clicking on any other
+  mode button, the buttonSelected class will pass - as it were - from the previous mode to 
+  the newly selected mode. The "Start the quiz" button will be enabled only as soon as one of 
+  the modes is selected.
+  */
   for (let btn of modeButtons) {
     btn.classList.remove("buttonSelected");
   }
@@ -695,7 +696,7 @@ const questionCounter = document.getElementById("questionCounter");
 const questionText = document.getElementById("questionText"); //questionElement
 const answersContainer = document.getElementById("answersContainer"); //answerButtonsElement
 const nextQuestionBtn = document.getElementById("nextQuestionBtn"); //nextButton
-const nextBtn = document.getElementById("next"); //nextButton at the end of quiz
+const finishBtn = document.getElementById("finish"); //nextButton at the end of quiz
 //↓↓↓ CREDIT: Microsoft Copilot ↓↓↓
 let isNextListenerAdded = false;
 //↑↑↑ CREDIT: Microsoft Copilot ↑↑↑
@@ -756,8 +757,7 @@ function showQuestion(question) {
     const button = document.createElement("button");
     button.innerText = answer.text;
     if (answer.correct) {
-      //Assigns each button a data attribute with correct
-      //answers for evaluation
+      //Assigns the correct answer a data attribute for evaluation
       button.dataset.correct = answer.correct;
     }
     button.addEventListener("click", () => selectAnswer(button));
@@ -792,20 +792,20 @@ function selectAnswer(clickedButton) {
     //↓↓↓CREDIT: freecodecamp ↓↓↓
     // https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
     setTimeout(function () {
-      nextBtn.classList.toggle("notVisible");
+      finishBtn.classList.toggle("notVisible");
     }, 500);
     //↑↑↑CREDIT: freecodecamp ↑↑↑
     //https://www.freecodecamp.org/news/javascript-settimeout-js-timer-to-delay-n-seconds/
-    nextBtn.addEventListener("click", endOfQuiz);
+    finishBtn.addEventListener("click", endOfQuiz);
   }
 }
 
 /*
-    Add click effect on Next Question button which allows navigation through quiz and
-    checks whether the event listener is already added to Next Questio button. This
-    ensures the question counter isn't incremented by 2 when taking the Quiz a 2nd, 3rd,
-    nth time.
-    */
+Add click effect on Next Question button which allows navigation through quiz and
+checks whether the event listener is already added to Next Questio button. This
+ensures the question counter isn't incremented by 2 when taking the Quiz a 2nd, 3rd,
+nth time.
+*/
 //↓↓↓ CREDIT: Microsoft Copilot ↓↓↓
 if (!isNextListenerAdded) {
   nextQuestionBtn.addEventListener("click", function () {
@@ -839,7 +839,6 @@ function resetState() {
 }
 
 /**
- * Clears any previous feedback from answers
  * Assigns CSS right/wrong classes to provide visual
  * feedback about correctness/wrongness of answers
  */
