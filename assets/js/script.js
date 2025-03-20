@@ -758,6 +758,7 @@ document.addEventListener("DOMContentLoaded", function () {
     chosenUsername.innerText = username;
     questionCounter.innerText = `Question ${counter}/${maxQuestionNumber}`;
     questionText.innerText = question.question;
+    questionText.style = `font-weight: bold; font-size: 25px`;
     question.answers.forEach((answer) => {
       const button = document.createElement("button");
       button.innerText = answer.text;
