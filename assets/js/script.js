@@ -260,6 +260,7 @@ const homeButton = document.getElementById("home");
 homeButton.addEventListener("click", function () {
   endOfQuizWindow.classList.add("hide");
   startWindow.classList.remove("hide");
+  rulesSection.classList.remove("hide");
   startForm.username.value = "";
   chooseMode.classList.remove("buttonSelected");
   chooseMode.disabled = true;
