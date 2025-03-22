@@ -107,6 +107,11 @@ h1 {
     margin: 10px auto;
 }
 
+#username~p {
+    font-size: 15px;
+    margin-right: 11px;
+}
+
 #buttonContainerStart {
     margin-top: 5px;
     display: flex;

@@ -62,10 +62,11 @@
             method="POST"
             id="startForm"
           >
-            <label for="username"><strong>Username:</strong></label>
-            <input type="text" id="username" name="username" required />
+            <label for="username"><strong>Username*:</strong></label>
+            <input type="text" id="username" name="username" />
+            <p>*The username must contain at least 4 characters</p>
             <br />
-            <button type="submit" id="chooseMode">Choose mode</button>
+            <button type="submit" id="chooseMode" disabled>Choose mode</button>
           </form>
           <div id="buttonContainerStart">
             <button class="hide mode" id="easyMode">Easy (5 questions)</button
@@ -83,7 +84,7 @@
         <div id="quizWindow" class="hide">
           <p id="chosenUsername">USERNAME</p>
           <p id="questionCounter"></p>
-          <br>
+          <br />
           <p id="questionText">Question Text</p>
           <div id="answersContainer"></div>
           <div id="nextQuestionCon">
