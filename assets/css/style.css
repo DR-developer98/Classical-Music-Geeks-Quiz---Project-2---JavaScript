@@ -1,11 +1,11 @@
 /*IMPORT GOOGLE FONTS*/
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Six+Caps&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Jaini&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
 
 :root {
     --primary-color: #402620;
     --button-color: #2b1915;
-    --primary-font: "Six Caps", sans-serif;
-    --secondary-font: "Inter", sans-serif;
+    --primary-font: "Jaini", system-ui;
+    --secondary-font: "Merriweather", serif;
 }
 
 * {
