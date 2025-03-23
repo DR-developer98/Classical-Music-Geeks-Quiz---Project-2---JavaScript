@@ -86,10 +86,10 @@ function showStartQuizButton(e) {
 //Question window components
 const chosenUsername = document.getElementById("chosenUsername");
 const questionCounter = document.getElementById("questionCounter");
-const questionText = document.getElementById("questionText"); //questionElement
-const answersContainer = document.getElementById("answersContainer"); //answerButtonsElement
-const nextQuestionBtn = document.getElementById("nextQuestionBtn"); //nextButton
-const finishBtn = document.getElementById("finish"); //nextButton at the end of quiz
+const questionText = document.getElementById("questionText"); 
+const answersContainer = document.getElementById("answersContainer"); 
+const nextQuestionBtn = document.getElementById("nextQuestionBtn"); 
+const finishBtn = document.getElementById("finish"); 
 //↓↓↓ CREDIT: Microsoft Copilot ↓↓↓
 let isNextListenerAdded = false;
 //↑↑↑ CREDIT: Microsoft Copilot ↑↑↑
@@ -170,14 +170,21 @@ function showQuestion(question) {
 function selectAnswer(clickedButton) {
   Array.from(answersContainer.children).forEach((button) => {
     button.disabled = true;
-    setStatusClass(button, button.dataset.correct);
   });
 
   const correct = clickedButton.dataset.correct;
   if (correct) {
     correctAnswerCounter++;
+    setStatusClass(clickedButton, true);
+  } else {
+    setStatusClass(clickedButton, false);
   }
-  setStatusClass(clickedButton, correct);
+
+  Array.from(answersContainer.children).forEach((button) => {
+    if(button.dataset.correct === "true"){
+      setStatusClass(button, true);
+    }
+  })
   //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
   nextQuestionBtn.disabled = false;
@@ -193,8 +200,22 @@ function selectAnswer(clickedButton) {
   }
 }
 
+/**
+ * Assigns CSS right/wrong classes to provide visual
+ * feedback about correctness/wrongness of answers
+ */
+function setStatusClass(element, correct) {
+  clearStatusClass(element);
+  if (correct) {
+    element.classList.add("right");
+  } else {
+    element.classList.add("wrong");
+  }
+}
+
+
 /*
-Add click effect on Next Question button which allows navigation through quiz and
+Adds click effect on Next Question button which allows navigation through quiz and
 checks whether the event listener is already added to Next Questio button. This
 ensures the question counter isn't incremented by 2 when taking the Quiz a 2nd, 3rd,
 nth time.
@@ -221,26 +242,15 @@ function setNewQuestion() {
 }
 
 /**
- *
+ * Removes all correct/wrong classes from answer buttons and
+ * removes the answers of the previous question to make space
+ * for the new ones.
  */
 function resetState() {
   clearStatusClass(document.body);
   nextQuestionBtn.disabled = true;
   while (answersContainer.firstChild) {
     answersContainer.removeChild(answersContainer.firstChild);
-  }
-}
-
-/**
- * Assigns CSS right/wrong classes to provide visual
- * feedback about correctness/wrongness of answers
- */
-function setStatusClass(element, correct) {
-  clearStatusClass(element);
-  if (correct) {
-    element.classList.add("right");
-  } else {
-    element.classList.add("wrong");
   }
 }
 

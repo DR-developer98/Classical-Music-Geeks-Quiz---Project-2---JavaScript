@@ -234,7 +234,7 @@ document
   });
   <!--Add picture of code snippets-->
 <br>
-<li>In the earlier stages of the development process, the Finish button at the end of the quiz had the label "Next". The event listener that calls the function endOfQuiz wasn't working, which caused the appearance of the "Next question" button next to the "Finish" button. This was simply fixed by adjusting the name of the button in the endOfQuiz function in the line of code that toggles the "notVisible" class.</li>
+<li>In the earlier stages of the development process, the "Finish" button at the end of the quiz had the label "Next". The event listener that calls the function endOfQuiz wasn't working, which caused the appearance of the "Next question" button next to the "Finish" button. This was simply fixed by adjusting the name of the button in the endOfQuiz function in the line of code that toggles the "notVisible" class.</li>
 <br>
 finishBtn.classList.toggle("notVisible");
 <!--Add picture of code snippets-->
