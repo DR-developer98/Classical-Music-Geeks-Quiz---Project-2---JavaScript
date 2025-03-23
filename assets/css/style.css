@@ -202,6 +202,11 @@ h1 {
     #container {
         width: 65%;
     }
+    /*START WINDOW SECTION*/
+    h1 {
+        font-size: 3.5rem;
+        margin-top: 7%;
+    }
 }
 
 @media screen and (min-width: 1200px) {

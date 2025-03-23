@@ -297,7 +297,7 @@ function endOfQuiz() {
   quizWindow.classList.toggle("hide");
   endOfQuizWindow.classList.toggle("hide");
   percentageCorrect = `${(correctAnswerCounter / maxQuestionNumber) * 100}`;
-  score.innerText = `${correctAnswerCounter}/${maxQuestionNumber}`;
+  score.innerText = `Your score: ${correctAnswerCounter}/${maxQuestionNumber}`;
   if (percentageCorrect >= 60) {
     feedbackMessage.innerText = `Well done on this one, ${username}!`;
   } else {
