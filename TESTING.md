@@ -7,17 +7,18 @@ Tablet: Galaxy Tab A (2016)
 Laptop: Lenovo
 For responsiveness and tests on devices larger than the ones mentioned above I used the BrowserDev Tools.-->
 
-<h2>Validator testing</h2>
+<h2 style="color: darkorange">Validator testing</h2>
 <h3>HTML</h3>
-
+<img src="assets/images-for-TESTING/html-validator.png" style="width: 75%">
 <h3>CSS</h3>
-
+<img src="assets/images-for-TESTING/css-validator.png" style="width: 75%">
 <h3>JavaScript</h3>
 
-<h2>Lighthouse report</h2>
+<h2 style="color: darkorange">Lighthouse report</h2>
 <h3>Lighthouse score</h3>
+<img src="assets/images-for-TESTING/Lighthouse-report-score.png">
 
-<h2>Manual testing</h2>
+<h2 style="color: darkorange">Manual testing</h2>
 
 <table>
 <tr>
@@ -202,7 +203,7 @@ Don't worry, though! You've probably learnt something new :)"</li>
 
 </table>
 
-<h2>Fixed Bugs</h2>
+<h2 style="color: darkorange">Fixed Bugs</h2>
 <ul>
 <li>When taking the quiz a 2nd time, the question counter would increment by 2 instead of just 1, which meant that you would even see question 11/10, 13/10 in the hard mode, since the counter would never equal the maximum number of question (as it is an even number, in this case). This was fixed by adding a variable to check whether the click event listener on the "Next question" button was already assigned. If it was, then it wouldn't be added again, therefore the "counter++" would cease to be triggered. <strong>Credit/Source:</strong> "Microsoft Copilot"</li>
 <img src="assets/images-for-TESTING/is-next-listener-added-variable.png"><br>
