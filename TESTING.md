@@ -13,6 +13,7 @@ For responsiveness and tests on devices larger than the ones mentioned above I u
 <h3>CSS</h3>
 <img src="assets/images-for-TESTING/css-validator.png" style="width: 75%">
 <h3>JavaScript</h3>
+<img src="assets/images-for-TESTING/jshint-validator-result.png" style="width: 75%">
 
 <h2 style="color: darkorange">Lighthouse report</h2>
 <h3>Lighthouse score</h3>

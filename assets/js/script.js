@@ -29,7 +29,8 @@ document
   });
 
 /**
- * Shows the three mode buttons after clicking on "Choose mode"
+ * Shows mode buttons
+ * @param {Event} e 
  */
 function showModes(e) {
   const form = e.target;
@@ -64,6 +65,7 @@ function showModes(e) {
 
 /**
  * Shows the start quiz button when clicking on any of the modes
+ * @param {Event} e 
  */
 function showStartQuizButton(e) {
   const selectedMode = e.target;
@@ -140,6 +142,7 @@ function setFirstQuestion() {
 
 /**
  * Displays question and its answers
+ * @param {String} question 
  */
 function showQuestion(question) {
   chosenUsername.innerText = username;
@@ -156,21 +159,24 @@ function showQuestion(question) {
     button.addEventListener("click", () => selectAnswer(button));
     answersContainer.appendChild(button);
   });
-  //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+  //↑↑↑ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app ↑↑↑
   if (counter === maxQuestionNumber) {
     nextQuestionBtn.classList.toggle("hide");
   }
 }
 
 /**
- * Disables all answer buttons as soon as a choice is made and
- * applies visual styling to provide feedback (right or wrong answer)
- * to the user
- */
+* Disables all answer buttons as soon as a choice is made and
+* applies visual styling to provide feedback (right or wrong answer)
+* to the user
+* @param {HTMLElement} clickedButton 
+*/
+//
 function selectAnswer(clickedButton) {
   Array.from(answersContainer.children).forEach((button) => {
     button.disabled = true;
   });
+//↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
 
   const correct = clickedButton.dataset.correct;
   if (correct) {
@@ -185,7 +191,7 @@ function selectAnswer(clickedButton) {
       setStatusClass(button, true);
     }
   })
-  //↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+  
 
   nextQuestionBtn.disabled = false;
   if (counter === maxQuestionNumber) {
@@ -203,6 +209,8 @@ function selectAnswer(clickedButton) {
 /**
  * Assigns CSS right/wrong classes to provide visual
  * feedback about correctness/wrongness of answers
+ * @param {HTMLElement} element 
+ * @param {Boolean} correct 
  */
 function setStatusClass(element, correct) {
   clearStatusClass(element);
@@ -256,6 +264,7 @@ function resetState() {
 
 /**
  * Removes previous feedback from answers
+ * @param {HTMLElement} element 
  */
 function clearStatusClass(element) {
   element.classList.remove("correct");
