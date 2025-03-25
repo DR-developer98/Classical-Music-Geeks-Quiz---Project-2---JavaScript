@@ -226,6 +226,10 @@ depending on answer correctness*/
     margin: 20px;
 }
 
+#takeAnotherQuiz {
+    margin-top: 10px;
+}
+
 /*MEDIA QUERIES*/
 /*Media query for (tablests) screens 768px and larger*/
 @media screen and (min-width: 760px) {
@@ -237,7 +241,7 @@ depending on answer correctness*/
 
     /*START WINDOW SECTION*/
     h1 {
-        margin-top: 10%;
+        margin-top: 15%;
     }
 
     /*QUIZ WINDOW SECTION*/
@@ -255,7 +259,6 @@ depending on answer correctness*/
     /*START WINDOW SECTION*/
     h1 {
         font-size: 3.5rem;
-        margin-top: 7%;
     }
 }
 
