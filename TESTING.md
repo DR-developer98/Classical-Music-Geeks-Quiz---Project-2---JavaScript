@@ -1,11 +1,11 @@
 <h1>TESTING</h1>
 
-<!--I tested that this website works across some of the major Browsers: Google Chrome, Mozilla Firefox and Microsoft Edge. I also ran manual tests on the following devices and the website worked on all of them as expected.
+I tested that this website works across some of the major Browsers: Google Chrome, Mozilla Firefox, Opera and Brave (the latter on mobile phone). I also ran manual tests on the following devices and the website worked on all of them as expected.
 
-Mobile phones: Samsung A52, Iphone 7 Plus;
-Tablet: Galaxy Tab A (2016)
-Laptop: Lenovo
-For responsiveness and tests on devices larger than the ones mentioned above I used the BrowserDev Tools.-->
+<strong>Mobile phones:</strong> Samsung A52, Iphone 7 Plus;
+<strong>Tablet:</strong> Galaxy Tab A (2016)
+<strong>Laptop:</strong> Lenovo
+For responsiveness and tests on devices larger than the ones mentioned above I used the BrowserDev Tools.
 
 <h2 style="color: darkorange">Validator testing</h2>
 <h3>HTML</h3>

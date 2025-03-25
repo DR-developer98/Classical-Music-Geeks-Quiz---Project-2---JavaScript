@@ -190,7 +190,7 @@ function selectAnswer(clickedButton) {
     if(button.dataset.correct === "true"){
       setStatusClass(button, true);
     }
-  })
+  });
   
 
   nextQuestionBtn.disabled = false;
