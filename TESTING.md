@@ -125,12 +125,12 @@ For responsiveness and tests on devices larger than the ones mentioned above I u
 </tr>
 <tr>
 <td>Select correct answer</td>
-<td>Selected button background-colour turns green, text-colour turns white. If the mouse cursor is inside button, its background-colur will be brown and the border will be green. "Next question" button is now clickable</td>
+<td>Selected button background-colour turns green, text-colour turns white. "Next question" button is now clickable</td>
 <td>Pass</td>
 </tr>
 <tr>
 <td>Select wrong answer</td>
-<td>Selected button background-colour turns red, text-colour turns white; the correct answer button turns green, its text-colour turns white. If the mouse cursor is inside button, its background-colur will be brown and the border will be red. "Next question" button is now clickable</td>
+<td>Selected button background-colour turns red, text-colour turns white; the correct answer button turns green, its text-colour turns white. "Next question" button is now clickable</td>
 <td>Pass</td>
 </tr>
 <tr>
