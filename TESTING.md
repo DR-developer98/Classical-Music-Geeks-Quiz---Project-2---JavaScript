@@ -1,10 +1,12 @@
 <h1>TESTING</h1>
 
-I tested that this website works across some of the major Browsers: Google Chrome, Mozilla Firefox, Opera and Brave (the latter on mobile phone). I also ran manual tests on the following devices and the website worked on all of them as expected.
+I tested that this website works across some of the major Browsers: Google Chrome, Mozilla Firefox, Opera and Brave (the latter was tested on my personal mobile phone: Samsung A52). I also ran manual tests on the following devices and the website worked on all of them as expected.
 
-<strong>Mobile phones:</strong> Samsung A52, Iphone 7 Plus;
-<strong>Tablet:</strong> Galaxy Tab A (2016)
-<strong>Laptop:</strong> Lenovo
+<ul>
+<li><strong>Mobile phones:</strong> Samsung A52, Iphone 7 Plus;</li>
+<li><strong>Tablet:</strong> Galaxy Tab A (2016);</li>
+<li><strong>Laptop:</strong> Lenovo.</li>
+</ul>
 For responsiveness and tests on devices larger than the ones mentioned above I used the BrowserDev Tools.
 
 <h2 style="color: darkorange">Validator testing</h2>
@@ -23,19 +25,19 @@ For responsiveness and tests on devices larger than the ones mentioned above I u
 
 <table>
 <tr>
-<th>Action</th>
-<th>Expected behaviour</th>
-<th>Pass/Fail</th>
+<th style="color: gold">Action</th>
+<th style="color: gold">Expected behaviour</th>
+<th style="color: gold">Pass/Fail</th>
 <tr>
 <tr>
-<td>START PAGE</td>
+<td><strong style="color: gold">START PAGE</strong></td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
-<td>Click on URL</td>
-<td></td>
-<td></td>
+<td>Click on URL <a href="https://dr-developer98.github.io/Classical-Music-Geeks-Quiz---Project-2---JavaScript/" target="_blank">https://dr-developer98.github.io/Classical-Music-Geeks-Quiz---Project-2---JavaScript/</a></td>
+<td>Land on Start page quiz</td>
+<td>Pass</td>
 </tr>
 <tr>
 <td>Type a username of less than 4 characters in the input field</td>
@@ -109,7 +111,7 @@ For responsiveness and tests on devices larger than the ones mentioned above I u
 <td>Pass</td>
 </tr>
 <tr>
-<td>QUIZ SECTIONS (applicable to all modes)</td>
+<td><strong style="color: gold">QUIZ SECTION (applicable to all modes)</strong></td>
 <td>-</td>
 <td>-</td>
 </tr>
@@ -166,7 +168,7 @@ Don't worry, though! You've probably learnt something new :)"</li>
 <td>Pass</td>
 </tr>
 <tr>
-<td>END OF QUIZ WINDOW</td>
+<td><strong style="color: gold">END OF QUIZ WINDOW</strong></td>
 <td>-</td>
 <td>-</td>
 </tr>
@@ -187,7 +189,7 @@ Don't worry, though! You've probably learnt something new :)"</li>
 <td>Pass</td>
 </tr>
 <tr>
-<td>TAKE ANOTHER QUIZ SCREEN</td>
+<td><strong style="color: gold">TAKE ANOTHER QUIZ SCREEN</strong></td>
 <td>-</td>
 <td>-</td>
 </tr>
@@ -201,7 +203,6 @@ Don't worry, though! You've probably learnt something new :)"</li>
 <td>Quiz starts displaying the elements described above, with the maximum number of questions depending on the mode</td>
 <td>Pass</td>
 </tr>
-
 </table>
 
 <h2 style="color: darkorange">Fixed Bugs</h2>

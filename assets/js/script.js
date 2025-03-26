@@ -171,12 +171,12 @@ function showQuestion(question) {
 * to the user
 * @param {HTMLElement} clickedButton 
 */
-//
+//↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app ↓↓↓
 function selectAnswer(clickedButton) {
   Array.from(answersContainer.children).forEach((button) => {
     button.disabled = true;
   });
-//↑↑↑CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app
+//↑↑↑ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app ↑↑↑
 
   const correct = clickedButton.dataset.correct;
   if (correct) {
@@ -212,6 +212,7 @@ function selectAnswer(clickedButton) {
  * @param {HTMLElement} element 
  * @param {Boolean} correct 
  */
+//↓↓↓ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app ↓↓↓
 function setStatusClass(element, correct) {
   clearStatusClass(element);
   if (correct) {
@@ -220,7 +221,7 @@ function setStatusClass(element, correct) {
     element.classList.add("wrong");
   }
 }
-
+//↑↑↑ CREDIT: https://hackr.io/blog/how-to-build-a-javascript-quiz-app ↑↑↑
 
 /*
 Adds click effect on Next Question button which allows navigation through quiz and
