@@ -137,7 +137,7 @@ For responsiveness and tests on devices larger than the ones mentioned above I u
 </tr>
 <tr>
 <td>Click on "Next question" button after having answered 1st question</td>
-<td>New question and its answers appear. Question counter is increased to 2/n, where "n" is the maximum number of questions per mode. Username keeps being displayed in the upper left corner; "Next question" button shows in the bottom right cornern and is disabled.</td>
+<td>New question and its answers appear. Question counter is increased to 2/n, where "n" is the maximum number of questions per mode. Username keeps being displayed in the upper left corner; "Next question" button shows in the bottom right corner and is disabled.</td>
 <td>Pass</td>
 </tr>
 <tr>
